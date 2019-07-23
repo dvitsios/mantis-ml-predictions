@@ -289,6 +289,10 @@
 
   <!-- Page level plugin JavaScript-->
   <script src="vendor/datatables/jquery.dataTables.js"></script>
+  <script src="https://cdn.datatables.net/buttons/1.5.6/js/dataTables.buttons.min.js"></script>
+  <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.html5.min.js"></script>
+  <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.flash.min.js"></script>
+
   <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
 
   <!-- Custom scripts for all pages-->
@@ -302,6 +306,7 @@
 
         $(document).ready(function() {
             $('#example').DataTable( {
+		dom: 'Bfrtip',
                 data: ALS_proba_dataset,
                 columns: [
                     { title: "Gene Name" },
@@ -313,7 +318,8 @@
                     { title: "SVC" },
                     { title: "Stacking" },
                 ],
-                "aaSorting" : []
+                "aaSorting" : [],
+		buttons: ['csv']
             } );
         } );
 
