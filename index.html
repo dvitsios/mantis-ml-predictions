@@ -27,7 +27,7 @@
 
   <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
-    <a class="navbar-brand mr-1" href="index.html">mantis-ml Predictions</a>
+    <a class="navbar-brand mr-1" href="index.html">mantis-ml Prediction Atlas</a>
 
     <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
       <i class="fas fa-bars"></i>
@@ -101,28 +101,28 @@
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <i class="fas fa-fw fa-folder"></i>
-          <span>Pages</span>
+          <span>Disease Areas</span>
         </a>
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-          <h6 class="dropdown-header">Login Screens:</h6>
-          <a class="dropdown-item" href="login.html">Login</a>
-          <a class="dropdown-item" href="register.html">Register</a>
-          <a class="dropdown-item" href="forgot-password.html">Forgot Password</a>
+          <h6 class="dropdown-header">Renal:</h6>
+          <a class="dropdown-item" href="ckd.html">CKD</a>
           <div class="dropdown-divider"></div>
-          <h6 class="dropdown-header">Other Pages:</h6>
-          <a class="dropdown-item" href="404.html">404 Page</a>
-          <a class="dropdown-item" href="blank.html">Blank Page</a>
+          <h6 class="dropdown-header">Neuro-developmental:</h6>
+          <a class="dropdown-item" href="epilepsy.html">Epilepsy</a>
+          <div class="dropdown-divider"></div>
+          <h6 class="dropdown-header">Others:</h6>
+          <a class="dropdown-item" href="als.html">ALS</a>
         </div>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="charts.html">
           <i class="fas fa-fw fa-chart-area"></i>
-          <span>Charts</span></a>
+          <span>Exploratory Analysis</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="tables.html">
           <i class="fas fa-fw fa-table"></i>
-          <span>Tables</span></a>
+          <span>Validation</span></a>
       </li>
     </ul>
 
@@ -213,13 +213,15 @@
             <i class="fas fa-chart-area"></i>
             AUC Performance per Classifier</div>
           <div class="card-body">
-            <img src='data/ALS/All_classifiers.AUC_distr_boxplots.png'>
+            <!-- TEMP: width and height are temp for development with MAMP -->
+            <img src='data/ALS/All_classifiers.AUC_distr_boxplots.png' style="height: auto; width: 900px">
         <!-- 
             <canvas id="myAreaChart" width="100%" height="30"></canvas>
         -->
           </div>
-          <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
         </div>
+
+        <br/><br/>
 
         <!-- DataTables Example -->
         <div class="card mb-3">
@@ -233,7 +235,7 @@
 
             </div>
           </div>
-          <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+          <div class="card-footer small text-muted">Updated 23 July 2019</div>
         </div>
 
       </div>
@@ -243,7 +245,7 @@
       <footer class="sticky-footer">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright © Your Website 2019</span>
+            <span>Copyright © AstraZeneca, Centre for Genomics Research (2019)</span>
           </div>
         </div>
       </footer>
