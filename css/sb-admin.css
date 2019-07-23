@@ -206,6 +206,11 @@ figure {
 img {
   vertical-align: middle;
   border-style: none;
+  padding: 0;
+  display: block;
+  margin: 0 auto;
+  max-height: 100%;
+    max-width: 100%;
 }
 
 svg {

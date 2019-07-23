@@ -1,0 +1,43 @@
+static:
+    Y_label: known_gene
+    gene_name: Gene_Name
+    data_dir: ../data
+run:
+    phenotype: ALS
+    tissue: Brain
+    additional_tissues: [Muscle - Skeletal]
+    run_id: production #-ALS_only
+    seed_include_terms: [Amyotrophic lateral sclerosis] #, Degeneration of the lateral corticospinal tracts, Dysfunction of lateral corticospinal tracts, Atrophy of the spinal cord, Progressive distal muscular atrophy, Spinal muscular atrophy, First dorsal interossei muscle atrophy, Cervical spinal cord atrophy, Corticospinal tract atrophy, Corticospinal tract hypoplasia, Atrophy/Degeneration involving the spinal cord]
+    exclude_terms: [heart muscle, heart_muscle, cardiac_muscle, smooth_muscle, cardiac muscle, smooth muscle, striated_muscle, striated muscle]
+    additional_include_terms: [nerve, nervous, neuronal, spine, spinal, cerebellum, cerebral, hippocampus, hypothalamus,
+                               muscular dystrophy, muscular fitness, muscle function, muscle,
+                               neuromuscular]
+    gene_annot_list: [DEAF1, OPTN, SPG11, TBK1]
+    anchor_genes: [DEAF1, OPTN, SPG11, TBK1]
+    include_disease_features: False
+    generic_classifier: None # None (default), AD, AR, AD_only, AR_only
+    hide_seed_genes_ratio: 0 # default: 0 (keep all seed genes)
+    seed_pos_ratio: 1.0 #default: 1.0
+    random_seeds: False
+pu_params:
+    classifiers: [ExtraTreesClassifier, DNN, RandomForestClassifier, SVC, XGBoost, GradientBoostingClassifier, Stacking]
+    iterations: 100 # default: 100
+    nthreads: 30 # default: 30
+eda_filters:
+    drop_missing_data_features: True
+    discard_highly_correlated: True
+    drop_gene_len_features: False
+    manual_feature_selection: False
+    create_plots: True
+eda_parameters:
+    high_corr_thres: 0.8
+    missing_data_thres: 0.25
+supervised_filters:
+    feature_selection: None #boruta, None
+    boruta_iterations: 100 # default: 100
+    boruta_decision_thres: 60 # default: 60
+    add_original_features_in_stacking: True # default: True
+    test_size: 0.2
+    balancing_ratio: 1.5
+    random_fold_split: True # use False for parameter GridSearch and debugging
+    kfold: 5
