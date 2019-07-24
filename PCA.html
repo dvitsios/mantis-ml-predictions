@@ -7,10 +7,6 @@
         
           
         <link rel="stylesheet" href="https://cdn.pydata.org/bokeh/release/bokeh-1.0.1.min.css" type="text/css" />
-        <script type="text/javascript" src="https://cdn.pydata.org/bokeh/release/bokeh-1.0.1.min.js"></script>
-        <script type="text/javascript">
-            Bokeh.set_log_level("info");
-        </script>
         
       
       
@@ -29,7 +25,14 @@
             
           
         
+        <script type="text/javascript" src="https://cdn.pydata.org/bokeh/release/bokeh-1.0.1.min.js"></script>
+        <script type="text/javascript">
+            Bokeh.set_log_level("info");
+        </script>
       
+
+        <script type="text/javascript" src="PCA.js"></script>
+
       
         <script type="text/javascript">
           (function() {
@@ -38,7 +41,7 @@
                 (function(root) {
                   function embed_document(root) {
                     
-                  var docs_json = document.getElementById('1146').textContent;
+                  //var docs_json = document.getElementById('1146').textContent;
                   var render_items = [{"docid":"854bf2c2-be51-42f5-b502-74962efcbd11","roots":{"1076":"7206d291-65f5-4ab1-9114-31d54f347341"}}];
                   root.Bokeh.embed.embed_items(docs_json, render_items);
                 

@@ -1,0 +1,25 @@
+gene_rankings.html:
+- Change best performing classifier in introduction.
+
+=== EDA Plots ===
+
+Numerical: 200ppi?
+Categorical: 150ppi?
+missing ratios: 200ppi
+Heatmaps: 100ppi
+
+
+
+=== (Interactive viz) Bokeh Plos ===
+> PCA:
+Change PCA to unknown genes at legend
+Delete PCA from text (bottom of .js)
+Change plot_height and plot_width to 500 and 900
+
+> tSNE:
+replace t-SNE.original_data.perplexity30 with unknown genes (at the bottom) and with '' at the top (legend)
+Change plot_height and plot_width to 700 and 900
+
+> UMAP:
+replace UMAP.original_data with unknown genes (at the bottom) and with '' at the top (legend)
+Change plot_height and plot_width to 700 and 900

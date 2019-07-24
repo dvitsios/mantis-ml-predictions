@@ -53,14 +53,14 @@
     <ul class="sidebar navbar-nav">
       <li class="nav-item active">
         <a class="nav-link" href="../../index.html">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <i class="fas fa-fw fa-home"></i>
           <span>Home</span>
         </a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="fas fa-fw fa-folder"></i>
-          <span>Disease Areas</span>
+          <i class="fas fa-fw fa-folder-open"></i>
+          <span>Browse Diseases</span>
         </a>
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
           <h6 class="dropdown-header">Renal:</h6>
@@ -73,16 +73,9 @@
           <a class="dropdown-item" href="#">ALS</a>
         </div>
       </li>
-      <!--
-      <li class="nav-item">
-        <a class="nav-link" href="charts.html">
-          <i class="fas fa-fw fa-chart-area"></i>
-          <span>Exploratory Analysis</span></a>
-      </li>
-      -->
       <li class="nav-item">
         <a class="nav-link" href="../../tables.html">
-          <i class="fas fa-fw fa-table"></i>
+          <i class="fas fa-fw fa-dna"></i>
           <span>Validation with WES</span></a>
       </li>
     </ul>
@@ -108,8 +101,65 @@
 
 	<br/><br/>
 
-        <!-- Area Chart Example-->
-        <div class="card mb-3">
+	<div class="card mb-3">
+		<div class="card-body">
+		
+		<i class="fas fa-info-circle"></i> This section contains <b>mantis-ml</b>'s predictions for ALS, given as <a href='#perc-datatable-div'>percentile</a> or <a href='#proba-datatable-div'>probability</a> scores. The higher the percentile/probability score, the more likely a gene is to be associated with that disease).
+		<br/><br/>
+		Percentile/probability scores are given for all classifiers used with mantis-ml for stochastic semi-supervised learning. 
+		<br/>
+		<b>Genes are sorted by default based on the classifier with the highest average AUC performance (ExtraTrees).</b>
+		<br/>
+		Further filtering can be applied as a follow-up, e.g. by selecting genes that are predicted as novel/positive (probability > 0.5) in at least 4 classifiers.
+		<br/><br/>
+		
+		You can also view the <a href='#auc-distr-div'>distribution of AUC performance scores per classifier</a>.
+		</div>
+	</div>
+	
+		<!-- Gene Rankings (percentile scores) -->
+        <div class="card mb-3" id='perc-datatable-div'>
+          <div class="card-header" style='float: left'>
+            <i class="fas fa-table"></i>
+            ALS: mantis-ml rankings per Classifier (percentile scores)
+		<div style="float: right">
+		   <a href="../../data/ALS/ranked-gene-predictions/full_ranked_predictions.csv" download>Download full table</a>
+		</div>
+	   </div>
+          <div class="card-body">
+            <div class="table-responsive">
+
+                   <table class="table table-bordered" id="gene-rankings-perc" class="display" width="100%"></table>
+
+            </div>
+          </div>
+        </div>
+		
+		<br/><br/>
+	
+        <!-- Gene Rankings (probability scores) -->
+        <div class="card mb-3" id='proba-datatable-div'>
+          <div class="card-header" style='float: left'>
+            <i class="fas fa-table"></i>
+            ALS: mantis-ml rankings per Classifier (probability scores)
+		<div style="float: right">
+		   <a href="../../data/ALS/ranked-gene-predictions/full_ranked_predictions.csv" download>Download full table</a>
+		</div>
+	   </div>
+          <div class="card-body">
+            <div class="table-responsive">
+
+                   <table class="table table-bordered" id="gene-rankings-proba" class="display" width="100%"></table>
+
+            </div>
+          </div>
+        </div>
+				
+		
+		<br/><br/>
+		
+		<!-- AUC performance per classifier-->
+        <div class="card mb-3" id='auc-distr-div'>
           <div class="card-header">
             <i class="fas fa-chart-area"></i>
             AUC Performance per Classifier</div>
@@ -117,37 +167,18 @@
             <!-- TEMP: width and height are temp for development with MAMP -->
             <img src='../../data/ALS/All_classifiers.AUC_distr_boxplots.png' style="height: auto; width: 900px">
           </div>
-        </div>
-
-        <br/><br/>
-
-        <!-- DataTables Example -->
-        <div class="card mb-3">
-          <div class="card-header" style='float: left'>
-            <i class="fas fa-table"></i>
-            ALS: mantis-ml rankings per Classifier (probability scores)
-		<div style="float: right">
-		   <a href="../../data/ALS/ranked-gene-predictions/full_ranked_predictions.csv" download>Download Table</a>
-		</div>
-	   </div>
-          <div class="card-body">
-            <div class="table-responsive">
-
-                   <table class="table table-bordered" id="gene-rankings" class="display" width="100%"></table>
-
-            </div>
-          </div>
-          <div class="card-footer small text-muted">Updated 23 July 2019</div>
+		  <div class="card-footer small text-muted">Updated 23 July 2019</div>
         </div>
 
       </div>
       <!-- /.container-fluid -->
 
+	  
       <!-- Sticky Footer -->
       <footer class="sticky-footer">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright © AstraZeneca, Centre for Genomics Research (2019)</span>
+            <span>Created by Dimitrios Vitsios (2019)</span>
           </div>
         </div>
       </footer>
@@ -186,10 +217,13 @@
   <script src="../../js/demo/datatables-demo.js"></script>
 
   <script type="text/javascript" src="../../data/ALS/ranked-gene-predictions/full_ranked_predictions.csv.proba.js"></script>
+  <script type="text/javascript" src="../../data/ALS/ranked-gene-predictions/full_ranked_predictions.csv.perc.js"></script>
+  
   <script>
 
         $(document).ready(function() {
-            $('#gene-rankings').DataTable( {
+            $('#gene-rankings-proba').DataTable( {
+				// "ajax": "sources/arrays.txt",
                 data: ALS_proba_dataset,
                 columns: [
                     { title: "Gene Name" },
@@ -201,7 +235,27 @@
                     { title: "SVC" },
                     { title: "Stacking" },
                 ],
-                "aaSorting" : []
+                "aaSorting" : [],
+				"deferRender": true
+            } );
+        } );
+
+		
+		$(document).ready(function() {
+            $('#gene-rankings-perc').DataTable( {
+                data: ALS_perc_dataset,
+                columns: [
+                    { title: "Gene Name" },
+                    { title: "XGBoost" },
+                    { title: "ExtraTrees" },
+                    { title: "GradientBoosting" },
+                    { title: "RandomForest" },
+                    { title: "DNN" },
+                    { title: "SVC" },
+                    { title: "Stacking" },
+                ],
+                "aaSorting" : [],
+				"deferRender": true
             } );
         } );
 
