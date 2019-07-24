@@ -27,11 +27,7 @@
 
   <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
-    <a class="navbar-brand mr-1" href="../../index.html">mantis-ml Prediction Atlas</a>
-
-    <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
-      <i class="fas fa-bars"></i>
-    </button>
+    <a class="navbar-brand mr-1" href="../../index.html" style='color: #deebf7; font-weight: bold; font-family:arial'>mantis-ml Prediction Atlas</a>
 
     <!-- Navbar Search -->
     <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
@@ -63,14 +59,9 @@
           <span>Browse Diseases</span>
         </a>
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-          <h6 class="dropdown-header">Renal:</h6>
-          <a class="dropdown-item" href="ckd.html">CKD</a>
-          <div class="dropdown-divider"></div>
-          <h6 class="dropdown-header">Neuro-developmental:</h6>
-          <a class="dropdown-item" href="epilepsy.html">Epilepsy</a>
-          <div class="dropdown-divider"></div>
-          <h6 class="dropdown-header">Others:</h6>
-          <a class="dropdown-item" href="#">ALS</a>
+
+            <div w3-include-html="../../sidebar_diseases.html"></div>
+
         </div>
       </li>
       <!--
@@ -94,7 +85,7 @@
         <!-- Breadcrumbs-->
         <ol class="breadcrumb">
           <li class="breadcrumb-item">
-            <a href="#">ALS</a>
+            <a href="overview.html">ALS</a>
           </li>
           <li class="breadcrumb-item active">Overview</li>
         </ol>
@@ -102,7 +93,17 @@
 
 	<a href="#" class="btn btn-info active" role="button">Overview</a>
 	<a href="gene-rankings.html" class="btn btn-info" role="button">Gene Rankings</a>
-	<a href="interactive-viz.html" class="btn btn-info" role="button">Interactive Visualisation</a>
+
+    <a class="btn btn-info dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Interactive Visualisation
+    </a>
+
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+    <a class="dropdown-item" href="interactive-viz-pca.html">PCA</a>
+    <a class="dropdown-item" href="interactive-viz-tsne.html">t-SNE</a>
+    <a class="dropdown-item" href="interactive-viz-umap.html">UMAP</a>
+    </div>
+
 	<a href="eda.html" class="btn btn-info" role="button">EDA Plots</a>
 	<a href="feature-importance.html" class="btn btn-info" role="button">Feature Importance</a>
 
@@ -272,6 +273,11 @@
         } );
 
     </script>
+
+
+    <script src="../../include_sidebar_diseases.js"></script>
+
+
 </body>
 
 </html>

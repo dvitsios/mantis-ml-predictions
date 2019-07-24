@@ -72,8 +72,6 @@
           <span>Validation with WES</span></a>
       </li>
     </ul>
-	
-
 
     <div id="content-wrapper">
 
@@ -84,7 +82,7 @@
           <li class="breadcrumb-item">
             <a href="overview.html">ALS</a>
           </li>
-          <li class="breadcrumb-item active">Feature Importance</li>
+          <li class="breadcrumb-item active">Interactive Visualisation</li>
         </ol>
 
 
@@ -102,43 +100,52 @@
     </div>
 
 	<a href="eda.html" class="btn btn-info" role="button">EDA Plots</a>
-	<a href="#" class="btn btn-info active" role="button">Feature Importance</a>
+	<a href="feature-importance.html" class="btn btn-info" role="button">Feature Importance</a>
 
 	<br/><br/>
 	
 		<div class="card mb-3">
-			<div class="card-body" style='line-height:2'>
+			<div class="card-body">
 			
-			<i class="fas fa-info-circle"></i>
-			This section contains the feature importance scores as extracted by the <b>Boruta</b> algorithm.
-            <br/>
-			Features are eventually labelled as <b>confirmed</b> (green), <b>tentative</b> (yellow) and <b>rejected</b> (red).
-			<br/>
-            Blue color denotes <b>'shadow'</b>/random features, used for evaulating the <i>not-by-chance</i> contribution of real features.
+			<i class="fas fa-info-circle"></i> In this section you can interactively inspect gene associations by feature similarity using three dimensionality reduction techniques that project the high-dimensional gene space into 2 dimensions: 
+            <b><a href='interactive-viz-pca.html#pca_bokeh_div'>PCA</a></b>, <b><a href='interactive-viz-tsne.html#tsne_bokeh_div'>t-SNE</a></b> and <b><a href='interactive-viz-umap.html#umap_bokeh_div'>UMAP</a></b>.
 			</div>
 		</div>
 	
-
-        <br/>
-
-		<!-- Boruta feature importance -->
-        <div class="card mb-3" id='num_hist_div'>
+		<!-- PCA bokeh plot -->
+        <div class="card mb-3" id='pca_bokeh_div'>
           <div class="card-header" style='float: left'>
             <i class="fas fa-chart-area"></i>
-            Feature importance by Boruta
-			<div style="float: right">
-				<a href="../../data/ALS/boruta_feature_imp_boxplots.pdf" download>Download as pdf</a>
-			</div>
+            PCA (Principal Component Analysis)
 		</div>
           <div class="card-body">
+			<div style='margin-top:-20px; color: #ef3b2c;'><span style='font-size:2rem;'>&#8226;</span> <span><b>Seed genes</b></span></div>
+			<div style='margin-top:-20px; color: #252525;'><span style='font-size:2rem;'>&#8226;</span> <span><b>Predicted genes</b></span></div>
 			
-			<img src='../../data/ALS/boruta_feature_imp_boxplots.png'>
-			
+			<div class="bk-root" id="pca_bokeh" style='margin-top:0px; width:700px; height: auto'></div>
+
 		  </div>
         </div>
-					
-	
 		
+		<br/><br/>
+
+
+
+		
+		<!-- Seed Genes -->
+        <div class="card mb-3">
+          <div class="card-header" style='float: left'>
+            <i class="fas fa-seedling"></i>
+            Seed genes (automatically inferred from HPO)
+		  </div>
+          <div class="card-body">
+            <div class="table-responsive">
+				PLEKHG5, ANG, ANXA11, ALS2, ASAH1, ATP7A, SQSTM1, NIPA1, CFAP410, CCNF, SLC33A1, VAPB, TRIP4, CHMP2B, MATR3, DAO, DCTN1, FIG4, WASHC5, DYNC1H1, ASCC1, ATL1, OPTN, TRPV4, BSCL2, EPHA4, ERBB4, SIGMAR1, FLII, DEAF1, FXN, FUS, RAI1, GARS, PPARGC1A, PNPLA6, GLE1, EXOSC8, HNRNPA1, CPT1C, DNAJB2, IGHMBP2, L1CAM, MAPT, ATP6, TBK1, NEFH, NEK1, TREM2, PFN1, PLP1, UBQLN2, POLG, PON1, PON2, PON3, DNAJC3, PRPH, PSEN1, ALDH18A1, RTN2, ATXN2, SPG11, CCT5, SMN1, C9ORF72, UNC13A, SOD1, SETX, SPAST, SPG7, IQSEC2, VPS13A, TBCE, BICD2, TARDBP, TUBA4A, UBA1, VCP, VRK1, TWNK, CHCHD10, FBXO38, TAF15
+            </div>
+          </div>
+		  <div class="card-footer small text-muted">Updated 23 July 2019</div>
+        </div>
+
 
 
       </div>
@@ -186,9 +193,60 @@
   <!-- Custom scripts for all pages-->
   <script src="../../js/sb-admin.min.js"></script>
 
-    
-  <script src="../../include_sidebar_diseases.js"></script>
+  <!-- Demo scripts for this page-->
+  <script src="../../js/demo/datatables-demo.js"></script>
+  
+  
 	
+  
+  <!-- Bokeh interactive visualisations -->
+  <script type="text/javascript" src="https://cdn.pydata.org/bokeh/release/bokeh-1.0.1.min.js"></script>
+	<script type="text/javascript">
+		Bokeh.set_log_level("info");
+	</script>
+  
+  
+    <script type="text/javascript" src="../../data/ALS/unsupervised-learning/PCA.js"></script>
+
+    
+	<!-- Render PCA Bokeh -->
+	<script type="text/javascript">
+	  (function() {
+		var fn = function() {
+		  Bokeh.safely(function() {
+			(function(root) {
+			  function embed_document(root) {
+				
+			  var render_items = [{"docid":"pca_docid","roots":{"1076":"pca_bokeh"}}];
+			  root.Bokeh.embed.embed_items(pca_json, render_items);
+			
+			  }
+			  if (root.Bokeh !== undefined) {
+				embed_document(root);
+			  } else {
+				var attempts = 0;
+				var timer = setInterval(function(root) {
+				  if (root.Bokeh !== undefined) {
+					embed_document(root);
+					clearInterval(timer);
+				  }
+				  attempts++;
+				  if (attempts > 100) {
+					console.log("Bokeh: ERROR: Unable to run BokehJS code because BokehJS library is missing");
+					clearInterval(timer);
+				  }
+				}, 10, root)
+			  }
+			})(window);
+		  });
+		};
+		if (document.readyState != "loading") fn();
+		else document.addEventListener("DOMContentLoaded", fn);
+	  })();
+	</script>
+	
+
+    <script src="../../include_sidebar_diseases.js"></script>
 	
 </body>
 

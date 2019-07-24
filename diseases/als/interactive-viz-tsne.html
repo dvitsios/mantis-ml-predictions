@@ -30,11 +30,8 @@
 
   <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
-    <a class="navbar-brand mr-1" href="../../index.html">mantis-ml Prediction Atlas</a>
+    <a class="navbar-brand mr-1" href="../../index.html" style='color: #deebf7; font-weight: bold; font-family:arial'>mantis-ml Prediction Atlas</a>
 
-    <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
-      <i class="fas fa-bars"></i>
-    </button>
 
     <!-- Navbar Search -->
     <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
@@ -66,14 +63,7 @@
           <span>Browse Diseases</span>
         </a>
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-          <h6 class="dropdown-header">Renal:</h6>
-          <a class="dropdown-item" href="ckd.html">CKD</a>
-          <div class="dropdown-divider"></div>
-          <h6 class="dropdown-header">Neuro-developmental:</h6>
-          <a class="dropdown-item" href="epilepsy.html">Epilepsy</a>
-          <div class="dropdown-divider"></div>
-          <h6 class="dropdown-header">Others:</h6>
-          <a class="dropdown-item" href="#">ALS</a>
+            <div w3-include-html="../../sidebar_diseases.html"></div>
         </div>
       </li>
       <li class="nav-item">
@@ -90,7 +80,7 @@
         <!-- Breadcrumbs-->
         <ol class="breadcrumb">
           <li class="breadcrumb-item">
-            <a href="#">ALS</a>
+            <a href="overview.html">ALS</a>
           </li>
           <li class="breadcrumb-item active">Interactive Visualisation</li>
         </ol>
@@ -98,7 +88,17 @@
 
 	<a href="overview.html" class="btn btn-info" role="button">Overview</a>
 	<a href="gene-rankings.html" class="btn btn-info" role="button">Gene Rankings</a>
-	<a href="#" class="btn btn-info active" role="button">Interactive Visualisation</a>
+
+    <a class="btn btn-info dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Interactive Visualisation
+    </a>
+
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+    <a class="dropdown-item" href="interactive-viz-pca.html">PCA</a>
+    <a class="dropdown-item" href="interactive-viz-tsne.html">t-SNE</a>
+    <a class="dropdown-item" href="interactive-viz-umap.html">UMAP</a>
+    </div>
+
 	<a href="eda.html" class="btn btn-info" role="button">EDA Plots</a>
 	<a href="feature-importance.html" class="btn btn-info" role="button">Feature Importance</a>
 
@@ -108,28 +108,10 @@
 			<div class="card-body">
 			
 			<i class="fas fa-info-circle"></i> In this section you can interactively inspect gene associations by feature similarity using three dimensionality reduction techniques that project the high-dimensional gene space into 2 dimensions: 
-			<b><a href='#pca_bokeh_div'>PCA</a></b>, <b><a href='#tsne_bokeh_div'>t-SNE</a></b> and <b><a href='#umap_bokeh_div'>UMAP</a></b>.
+            <b><a href='interactive-viz-pca.html#pca_bokeh_div'>PCA</a></b>, <b><a href='interactive-viz-tsne.html#tsne_bokeh_div'>t-SNE</a></b> and <b><a href='interactive-viz-umap.html#umap_bokeh_div'>UMAP</a></b>.
 			</div>
 		</div>
 	
-		<!-- PCA bokeh plot -->
-        <div class="card mb-3" id='pca_bokeh_div'>
-          <div class="card-header" style='float: left'>
-            <i class="fas fa-chart-area"></i>
-            PCA (Principal Component Analysis)
-		</div>
-          <div class="card-body">
-			<div style='margin-top:-20px; color: #ef3b2c;'><span style='font-size:2rem;'>&#8226;</span> <span><b>Seed genes</b></span></div>
-			<div style='margin-top:-20px; color: #252525;'><span style='font-size:2rem;'>&#8226;</span> <span><b>Predicted genes</b></span></div>
-			
-			<div class="bk-root" id="pca_bokeh" style='margin-top:0px; width:700px; height: auto'></div>
-
-		  </div>
-        </div>
-		
-		<br/><br/>
-
-
 
 		<!-- t-SNE bokeh plot -->
         <div class="card mb-3" id='tsne_bokeh_div'>
@@ -148,26 +130,6 @@
 		
 		<br/><br/>
 
-		
-		<!-- UMAP bokeh plot -->
-        <div class="card mb-3" id='umap_bokeh_div'>
-          <div class="card-header" style='float: left'>
-            <i class="fas fa-chart-area"></i>
-            UMAP (Uniform Manifold Approximation and Projection)
-		</div>
-          <div class="card-body">
-			<div style='margin-top:-20px; color: #ef3b2c;'><span style='font-size:2rem;'>&#8226;</span> <span><b>Seed genes</b></span></div>
-			<div style='margin-top:-20px; color: #252525;'><span style='font-size:2rem;'>&#8226;</span> <span><b>Predicted genes</b></span></div>
-			
-			<div class="bk-root" id="umap_bokeh" style='margin-top:0px; width:700px; height: auto'></div>
-
-		  </div>
-        </div>
-		
-		<br/><br/>
-
-		
-		
 		
 		
 		<!-- Seed Genes -->
@@ -244,47 +206,8 @@
 	</script>
   
   
-    <script type="text/javascript" src="../../data/ALS/unsupervised-learning/PCA.js"></script>
 	<script type="text/javascript" src="../../data/ALS/unsupervised-learning/tSNE.js"></script>
-	<script type="text/javascript" src="../../data/ALS/unsupervised-learning/UMAP.js"></script>
-
     
-	<!-- Render PCA Bokeh -->
-	<script type="text/javascript">
-	  (function() {
-		var fn = function() {
-		  Bokeh.safely(function() {
-			(function(root) {
-			  function embed_document(root) {
-				
-			  var render_items = [{"docid":"pca_docid","roots":{"1076":"pca_bokeh"}}];
-			  root.Bokeh.embed.embed_items(pca_json, render_items);
-			
-			  }
-			  if (root.Bokeh !== undefined) {
-				embed_document(root);
-			  } else {
-				var attempts = 0;
-				var timer = setInterval(function(root) {
-				  if (root.Bokeh !== undefined) {
-					embed_document(root);
-					clearInterval(timer);
-				  }
-				  attempts++;
-				  if (attempts > 100) {
-					console.log("Bokeh: ERROR: Unable to run BokehJS code because BokehJS library is missing");
-					clearInterval(timer);
-				  }
-				}, 10, root)
-			  }
-			})(window);
-		  });
-		};
-		if (document.readyState != "loading") fn();
-		else document.addEventListener("DOMContentLoaded", fn);
-	  })();
-	</script>
-	
 
 	<!-- Render t-SNE Bokeh -->	
 	<script type="text/javascript">
@@ -322,43 +245,7 @@
           })();
     </script>
 	
-	
-	<!-- Render UMAP Bokeh -->	
-	<script type="text/javascript">
-          (function() {
-            var fn = function() {
-              Bokeh.safely(function() {
-                (function(root) {
-                  function embed_document(root) {
-                    
-                  var render_items = [{"docid":"umap_docid","roots":{"1003":"umap_bokeh"}}];
-                  root.Bokeh.embed.embed_items(umap_json, render_items);
-                
-                  }
-                  if (root.Bokeh !== undefined) {
-                    embed_document(root);
-                  } else {
-                    var attempts = 0;
-                    var timer = setInterval(function(root) {
-                      if (root.Bokeh !== undefined) {
-                        embed_document(root);
-                        clearInterval(timer);
-                      }
-                      attempts++;
-                      if (attempts > 100) {
-                        console.log("Bokeh: ERROR: Unable to run BokehJS code because BokehJS library is missing");
-                        clearInterval(timer);
-                      }
-                    }, 10, root)
-                  }
-                })(window);
-              });
-            };
-            if (document.readyState != "loading") fn();
-            else document.addEventListener("DOMContentLoaded", fn);
-          })();
-    </script>
-	
+    <script src="../../include_sidebar_diseases.js"></script>	
 	
 </body>
 

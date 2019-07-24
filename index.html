@@ -27,11 +27,8 @@
 
   <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
-    <a class="navbar-brand mr-1" href="index.html">mantis-ml Prediction Atlas</a>
+    <a class="navbar-brand mr-1" href="#" style='color: #deebf7; font-weight: bold; font-family:arial'>mantis-ml Prediction Atlas</a>
 
-    <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
-      <i class="fas fa-bars"></i>
-    </button>
 
     <!-- Navbar Search -->
     <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
@@ -63,14 +60,9 @@
           <span>Browse Diseases</span>
         </a>
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-          <h6 class="dropdown-header">Renal:</h6>
-          <a class="dropdown-item" href="diseases/ckd/overview.html">CKD</a>
-          <div class="dropdown-divider"></div>
-          <h6 class="dropdown-header">Neuro-developmental:</h6>
-          <a class="dropdown-item" href="diseases/epilepsy/overview.html">Epilepsy</a>
-          <div class="dropdown-divider"></div>
-          <h6 class="dropdown-header">Others:</h6>
-          <a class="dropdown-item" href="diseases/als/overview.html">ALS</a>
+
+            <div w3-include-html="sidebar_diseases.html"></div>
+
         </div>
       </li>
      
@@ -222,27 +214,9 @@
   <script src="js/demo/datatables-demo.js"></script>
 
   <script type="text/javascript" src="data/ALS/ranked-gene-predictions/full_ranked_predictions.csv.proba.js"></script>
-  <script>
-	/*
-        $(document).ready(function() {
-            $('#example').DataTable( {
-                data: ALS_proba_dataset,
-                columns: [
-                    { title: "Gene Name" },
-                    { title: "XGBoost" },
-                    { title: "ExtraTrees" },
-                    { title: "GradientBoosting" },
-                    { title: "RandomForest" },
-                    { title: "DNN" },
-                    { title: "SVC" },
-                    { title: "Stacking" },
-                ],
-                "aaSorting" : []
-            } );
-        } );
-	*/
-	
-	</script>
+
+  <script src="include_sidebar_diseases.js"></script>
+
 </body>
 
 </html>
