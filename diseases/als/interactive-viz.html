@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>mantis-ml Prediction Atlas</title>
+
+  <!-- Custom fonts for this template-->
+  <link href="../../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+
+  <!-- Page level plugin CSS-->
+  <link href="../../vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+
+  <!-- Custom styles for this template-->
+  <link href="../../css/sb-admin.css" rel="stylesheet">
+
+
+	<link rel="stylesheet" href="https://cdn.pydata.org/bokeh/release/bokeh-1.0.1.min.css" type="text/css" />
+	
+</head>
+
+<body id="page-top">
+
+  <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
+
+    <a class="navbar-brand mr-1" href="../../index.html">mantis-ml Prediction Atlas</a>
+
+    <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Navbar Search -->
+    <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+        <div class="input-group-append">
+          <button class="btn btn-primary" type="button">
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
+      </div>
+    </form>
+
+  </nav>
+
+  <div id="wrapper">
+
+    <!-- Sidebar -->
+    <ul class="sidebar navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="../../index.html">
+          <i class="fas fa-fw fa-home"></i>
+          <span>Home</span>
+        </a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-fw fa-notes-medical"></i>
+          <span>Browse Diseases</span>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+          <h6 class="dropdown-header">Renal:</h6>
+          <a class="dropdown-item" href="ckd.html">CKD</a>
+          <div class="dropdown-divider"></div>
+          <h6 class="dropdown-header">Neuro-developmental:</h6>
+          <a class="dropdown-item" href="epilepsy.html">Epilepsy</a>
+          <div class="dropdown-divider"></div>
+          <h6 class="dropdown-header">Others:</h6>
+          <a class="dropdown-item" href="#">ALS</a>
+        </div>
+      </li>
+      <!--
+      <li class="nav-item">
+        <a class="nav-link" href="charts.html">
+          <i class="fas fa-fw fa-chart-area"></i>
+          <span>Exploratory Analysis</span></a>
+      </li>
+      -->
+      <li class="nav-item">
+        <a class="nav-link" href="../../tables.html">
+          <i class="fas fa-fw fa-dna"></i>
+          <span>Validation with WES</span></a>
+      </li>
+    </ul>
+
+    <div id="content-wrapper">
+
+      <div class="container-fluid">
+
+        <!-- Breadcrumbs-->
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a href="#">ALS</a>
+          </li>
+          <li class="breadcrumb-item active">Overview</li>
+        </ol>
+
+
+	<a href="#" class="btn btn-info active" role="button">Overview</a>
+	<a href="gene-rankings.html" class="btn btn-info" role="button">Gene Rankings</a>
+	<a href="interactive-viz.html" class="btn btn-info" role="button">Interactive Visualisation</a>
+	<a href="eda.html" class="btn btn-info" role="button">EDA Plots</a>
+	<a href="feature-importance.html" class="btn btn-info" role="button">Feature Importance</a>
+
+	<br/><br/>
+	
+
+		<!-- DataTables Example -->
+        <div class="card mb-3">
+          <div class="card-header" style='float: left'>
+            <i class="fas fa-info-circle"></i>
+            General Info
+		</div>
+          <div class="card-body">
+			<b>Disease:</b> Amyotrophic Lateral Sclerosis
+		  </div>
+        </div>
+		
+		<br/><br/>
+		
+	
+        <!-- Area Chart Example-->
+        <div class="card mb-3">
+          <div class="card-header">
+            <i class="fas fa-file-alt"></i>
+            Configuration file</div>
+          <div class="card-body">
+
+			<table class="table table-bordered">
+			  <thead>
+				<tr>
+				  <th colspan="3"> Basic parameters</th>
+				</tr>
+				<tr>
+				  <th scope="col">run:</th>
+				  <th scope="col"></th>
+				  <th scope="col"></th>
+				</tr>
+			  </thead>
+			  <tbody>
+				<tr>
+				  <th scope="row"></th>
+				  <td><b>phenotype:</b></td>
+				  <td>ALS</td>
+				</tr>
+				<tr>
+				  <th scope="row"></th>
+				  <td><b>tissue:</b></td>
+				  <td>brain</td>
+				</tr>
+				<tr>
+				  <th scope="row"></th>
+				  <td><b>additional_tissues:</b></td>
+				  <td>Muscle - Skeletal</td>
+				</tr>
+				<tr>
+				  <th scope="row"></th>
+				  <td><b>seed_include_terms:</b></td>
+				  <td>Amyotrophic lateral sclerosis, Degeneration of the lateral corticospinal tracts,
+						Dysfunction of lateral corticospinal tracts,
+						Atrophy of the spinal cord,
+						Progressive distal muscular atrophy,
+						Spinal muscular atrophy,
+						First dorsal interossei muscle atrophy, 
+						Cervical spinal cord atrophy, 
+						Corticospinal tract atrophy, 
+						Corticospinal tract hypoplasia, 
+						Atrophy/Degeneration involving the spinal cord</td>
+				</tr>
+				<tr>
+				  <th scope="row"></th>
+				  <td><b>exclude_terms:</b></td>
+				  <td>heart muscle, heart_muscle, cardiac_muscle, smooth_muscle, cardiac muscle, smooth muscle, striated_muscle, striated muscle</td>
+				</tr>
+				<tr>
+				  <th scope="row"></th>
+				  <td><b>additional_include_terms:</b></td>
+				  <td>nerve, nervous, neuronal, spine, spinal, cerebellum, cerebral, hippocampus, hypothalamus, muscular dystrophy, muscular fitness, muscle function, muscle, neuromuscular</td>
+				</tr>
+				
+			  </tbody>
+			</table> 
+			
+          </div>
+        </div>
+
+		<br/><br/>
+		
+		<!-- Seed Genes -->
+        <div class="card mb-3">
+          <div class="card-header" style='float: left'>
+            <i class="fas fa-seedling"></i>
+            Seed genes (automatically inferred from HPO)
+		  </div>
+          <div class="card-body">
+            <div class="table-responsive">
+				PLEKHG5, ANG, ANXA11, ALS2, ASAH1, ATP7A, SQSTM1, NIPA1, CFAP410, CCNF, SLC33A1, VAPB, TRIP4, CHMP2B, MATR3, DAO, DCTN1, FIG4, WASHC5, DYNC1H1, ASCC1, ATL1, OPTN, TRPV4, BSCL2, EPHA4, ERBB4, SIGMAR1, FLII, DEAF1, FXN, FUS, RAI1, GARS, PPARGC1A, PNPLA6, GLE1, EXOSC8, HNRNPA1, CPT1C, DNAJB2, IGHMBP2, L1CAM, MAPT, ATP6, TBK1, NEFH, NEK1, TREM2, PFN1, PLP1, UBQLN2, POLG, PON1, PON2, PON3, DNAJC3, PRPH, PSEN1, ALDH18A1, RTN2, ATXN2, SPG11, CCT5, SMN1, C9ORF72, UNC13A, SOD1, SETX, SPAST, SPG7, IQSEC2, VPS13A, TBCE, BICD2, TARDBP, TUBA4A, UBA1, VCP, VRK1, TWNK, CHCHD10, FBXO38, TAF15
+            </div>
+          </div>
+		  <div class="card-footer small text-muted">Updated 23 July 2019</div>
+        </div>
+
+
+
+      </div>
+      <!-- /.container-fluid -->
+
+      <!-- Sticky Footer -->
+      <footer class="sticky-footer">
+        <div class="container my-auto">
+          <div class="copyright text-center my-auto">
+            <span>Copyright © AstraZeneca, Centre for Genomics Research (2019)</span>
+          </div>
+        </div>
+      </footer>
+
+    </div>
+    <!-- /.content-wrapper -->
+
+  </div>
+  <!-- /#wrapper -->
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+
+  <!-- Bootstrap core JavaScript-->
+  <script src="../../vendor/jquery/jquery.min.js"></script>
+  <script src="../../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="../../vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Page level plugin JavaScript-->
+  <script src="../../vendor/datatables/jquery.dataTables.js"></script>
+  <script src="https://cdn.datatables.net/buttons/1.5.6/js/dataTables.buttons.min.js"></script>
+  <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.html5.min.js"></script>
+  <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.flash.min.js"></script>
+
+  <script src="../../vendor/datatables/dataTables.bootstrap4.js"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="../../js/sb-admin.min.js"></script>
+
+  <!-- Demo scripts for this page-->
+  <script src="../../js/demo/datatables-demo.js"></script>
+  
+  
+  
+  <!-- Bokeh interactive visualisations -->
+  <script type="text/javascript" src="https://cdn.pydata.org/bokeh/release/bokeh-1.0.1.min.js"></script>
+	<script type="text/javascript">
+		Bokeh.set_log_level("info");
+	</script>
+  
+  
+
+  <script type="text/javascript" src="../../data/ALS/ranked-gene-predictions/full_ranked_predictions.csv.proba.js"></script>
+
+	
+	<div w3-include-html="../../PCA_test.html"></div>
+	
+	
+	<script>
+		function includeHTML() {
+		  var z, i, elmnt, file, xhttp;
+		  /* Loop through a collection of all HTML elements: */
+		  z = document.getElementsByTagName("*");
+		  for (i = 0; i < z.length; i++) {
+			elmnt = z[i];
+			/*search for elements with a certain atrribute:*/
+			file = elmnt.getAttribute("w3-include-html");
+			if (file) {
+			  /* Make an HTTP request using the attribute value as the file name: */
+			  xhttp = new XMLHttpRequest();
+			  xhttp.onreadystatechange = function() {
+				if (this.readyState == 4) {
+				  if (this.status == 200) {elmnt.innerHTML = this.responseText;}
+				  if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
+				  /* Remove the attribute, and call this function once more: */
+				  elmnt.removeAttribute("w3-include-html");
+				  includeHTML();
+				}
+			  }
+			  xhttp.open("GET", file, true);
+			  xhttp.send();
+			  /* Exit the function: */
+			  return;
+			}
+		  }
+		}
+	</script>
+
+	<script>
+		includeHTML();
+	</script>
+	
+	
+</body>
+
+</html>
