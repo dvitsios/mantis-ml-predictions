@@ -57,7 +57,7 @@
           <span>Home</span>
         </a>
       </li>
-      <li class="nav-item dropdown">
+      <li class="nav-item dropdown" id='sidebar_menu'>
         <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <i class="fas fa-fw fa-folder-open"></i>
           <span>Browse Diseases</span>
@@ -85,54 +85,78 @@
 
       <div class="container-fluid">
 
-        <!-- Breadcrumbs-->
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item">
-            <a href="#">ALS</a>
-          </li>
-          <li class="breadcrumb-item active">Results</li>
-        </ol>
+		<div class="card mb-3">
+          <div class="card-header">
+            <i class="fas fa-info-circle"></i>
+            Overview</div>
+          <div class="card-body">
+            
+			<span style='color: #3182bd; font-weight: bold'>mantis-ml Prediction Atlas</span> is a repository for <b>disease-associated gene predictions</b> extracted by <a href='https://github.com/astrazeneca-cgr-publications/mantis-ml-release'>mantis-ml</a>.
+			
+			<br/><br/>
+			
+			The atlas currently contains gene prediction results for <b>3</b> diseases as well as for a disease-agnostic scenario (<b>GMS</b> or <b>Generic Mantis-ml Score</b>).
+			
+			<br/><br/>
+			You can browse results from each disease from the <span style='color: #3182bd; font-weight: bold'>Browse Diseases</span> menu or the drop-down on the top right.
+			<br/>
+			Disease-associated results include:
+				<ul>
+					<li>Gene rankings</li>
+					<li>Interactive Visualisation of gene predictions on PCA/t-SNE/UMAP 2D plots</li>
+					<li>Exploratory & Data Analysis Plots</li>
+					<li>Feature importance scores by Boruta</li>
+				</ul>
+          </div>
+        </div>
+		
+		
+		
+		<div class="card mb-3">
+          <div class="card-header">
+            <i class="fas fa-info-circle"></i>
+            Description</div>
+          <div class="card-body">
+            			
+			<p>
+			<a href='https://github.com/astrazeneca-cgr-publications/mantis-ml-release'>mantis-ml</a> follows and Automated Machine Learning (<b>AutoML</b>) approach for feature extraction (relevant to the disease of interest), feature compilation and pre-processing. The processed feature table is then fed to the main algorithm that lies in the core of <a href='https://github.com/astrazeneca-cgr-publications/mantis-ml-release'>mantis-ml</a>: a <b>stochastic semi-supervised learning approach</b> that ranks genes based on their average performance in out-of-bag sets across random balanced datasets from the entire gene pool.
+			</p>
+			
+			<p>
+			A set of standard classifiers are used as part of the semi-supervised learning task:
 
+			<ul>
+				<li><i>Random Forests (RF)</i></li>
+				<li><i>Extremely Randomised Trees (Extra Trees; ET)</i></li>
+				<li><i>Gradien Boosting (GB)</i></li>
+				<li><i>Extreme Gradient Boosting (XGBoost)</i></li>
+				<li><i>Support Vector Classifier (SVC)</i></li>
+				<li><i>Deep Neural Net (DNN)</i></li>
+				<li><i>Stacking (1st layer: RF, ET, GB, SVC; 2nd layer: DNN)</i></li>
+			</ul>
+			
+			Following the semi-supervised learning step of mantis-ml, <b>predictions may be overlapped with results from cohort-level rare-variant association studies</b> (see <a href='wes_validation.html'>Validation with WES</a>).
 
+			<br/><br/>
+			The final consensus results can then been visualised using a set of dimensionality reduction techniques:
+
+			<ul>
+				<li>PCA (Principal Component Analysis)</li>
+				<li>t-SNE (t-distributed Stochastic Neighbor Embedding)</li>
+				<li>UMAP (Uniform Manifold Approximation and Projection)</li>
+			</ul>
+			
+          </div>
+        </div>
+        
+
+	<!--
 	<a href="#link" class="btn btn-info active" role="button">Overview</a>
 	<a href="#link" class="btn btn-info" role="button">Gene Rankings</a>
 	<a href="#link" class="btn btn-info" role="button">Interactive Visualisation</a>
 	<a href="#link" class="btn btn-info" role="button">EDA Plots</a>
 	<a href="#link" class="btn btn-info" role="button">Feature Importance</a>
-
-	<br/><br/>
-
-        <!-- Area Chart Example-->
-        <div class="card mb-3">
-          <div class="card-header">
-            <i class="fas fa-chart-area"></i>
-            AUC Performance per Classifier</div>
-          <div class="card-body">
-            <!-- TEMP: width and height are temp for development with MAMP -->
-            <img src='data/ALS/All_classifiers.AUC_distr_boxplots.png' style="height: auto; width: 900px">
-          </div>
-        </div>
-
-        <br/><br/>
-
-        <!-- DataTables Example -->
-        <div class="card mb-3">
-          <div class="card-header" style='float: left'>
-            <i class="fas fa-table"></i>
-            ALS: mantis-ml rankings per Classifier (probability scores)
-		<div style="float: right">
-		   <a href="data/ALS/ranked-gene-predictions/full_ranked_predictions.csv" download>Download Table</a>
-		</div>
-	   </div>
-          <div class="card-body">
-            <div class="table-responsive">
-            <!-- <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0"> </table> -->
-                   <table class="table table-bordered" id="example" class="display" width="100%"></table>
-
-            </div>
-          </div>
-          <div class="card-footer small text-muted">Updated 23 July 2019</div>
-        </div>
+	-->
 
       </div>
       <!-- /.container-fluid -->
@@ -141,7 +165,7 @@
       <footer class="sticky-footer">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright © AstraZeneca, Centre for Genomics Research (2019)</span>
+            <span>Created by Dimitrios Vitsios (2019)</span>
           </div>
         </div>
       </footer>
@@ -199,7 +223,7 @@
 
   <script type="text/javascript" src="data/ALS/ranked-gene-predictions/full_ranked_predictions.csv.proba.js"></script>
   <script>
-
+	/*
         $(document).ready(function() {
             $('#example').DataTable( {
                 data: ALS_proba_dataset,
@@ -216,8 +240,9 @@
                 "aaSorting" : []
             } );
         } );
-
-    </script>
+	*/
+	
+	</script>
 </body>
 
 </html>
