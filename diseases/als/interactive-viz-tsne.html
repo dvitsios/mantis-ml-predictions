@@ -34,16 +34,7 @@
 
 
     <!-- Navbar Search -->
-    <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
-      <div class="input-group">
-        <input type="text" class="form-control" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-        <div class="input-group-append">
-          <button class="btn btn-primary" type="button">
-            <i class="fas fa-search"></i>
-          </button>
-        </div>
-      </div>
-    </form>
+    <div w3-include-html="../../navbar_search.html" style='margin-left:auto; margin-right:0;'></div>
 
   </nav>
 
@@ -100,7 +91,7 @@
         <div class="card mb-3" id='tsne_bokeh_div'>
           <div class="card-header" style='float: left'>
             <i class="fas fa-chart-area"></i>
-            t-SNE (t-Distributed Stochastic Neighbor Embedding)
+            t-SNE (t-Distributed Stochastic Neighbor Embedding; <i>perplexity=30</i>)
 		</div>
           <div class="card-body">
 			<div style='margin-top:-20px; color: #ef3b2c;'><span style='font-size:2rem;'>&#8226;</span> <span><b>Seed genes</b></span></div>
@@ -123,7 +114,9 @@
 		  </div>
           <div class="card-body">
             <div class="table-responsive">
-				PLEKHG5, ANG, ANXA11, ALS2, ASAH1, ATP7A, SQSTM1, NIPA1, CFAP410, CCNF, SLC33A1, VAPB, TRIP4, CHMP2B, MATR3, DAO, DCTN1, FIG4, WASHC5, DYNC1H1, ASCC1, ATL1, OPTN, TRPV4, BSCL2, EPHA4, ERBB4, SIGMAR1, FLII, DEAF1, FXN, FUS, RAI1, GARS, PPARGC1A, PNPLA6, GLE1, EXOSC8, HNRNPA1, CPT1C, DNAJB2, IGHMBP2, L1CAM, MAPT, ATP6, TBK1, NEFH, NEK1, TREM2, PFN1, PLP1, UBQLN2, POLG, PON1, PON2, PON3, DNAJC3, PRPH, PSEN1, ALDH18A1, RTN2, ATXN2, SPG11, CCT5, SMN1, C9ORF72, UNC13A, SOD1, SETX, SPAST, SPG7, IQSEC2, VPS13A, TBCE, BICD2, TARDBP, TUBA4A, UBA1, VCP, VRK1, TWNK, CHCHD10, FBXO38, TAF15
+				
+				<div w3-include-html="../../data/ALS/seed_genes.html" style='font-size:14px'></div>
+				
             </div>
           </div>
 		  <div class="card-footer small text-muted">Updated 23 July 2019</div>
@@ -138,7 +131,7 @@
       <footer class="sticky-footer">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-			<span>Created by Dimitrios Vitsios (2019)</span>
+			<div w3-include-html="../../footer.html"></div>
           </div>
         </div>
       </footer>
@@ -200,7 +193,7 @@
                 (function(root) {
                   function embed_document(root) {
                     
-                  var render_items = [{"docid":"tsne_docid","roots":{"1149":"tsne_bokeh"}}];
+                  var render_items = [{"docid":"tsne_docid","roots":{"root_id":"tsne_bokeh"}}];
                   root.Bokeh.embed.embed_items(tsne_json, render_items);
                 
                   }
@@ -228,7 +221,7 @@
           })();
     </script>
 	
-    <script src="../../include_sidebar_diseases.js"></script>	
+    <script src="../../include_html_divs.js"></script>	
 	
 </body>
 

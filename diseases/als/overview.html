@@ -30,16 +30,7 @@
     <a class="navbar-brand mr-1" href="../../index.html" style='color: #deebf7; font-weight: bold; font-family:arial'>mantis-ml Prediction Atlas</a>
 
     <!-- Navbar Search -->
-    <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
-      <div class="input-group">
-        <input type="text" class="form-control" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-        <div class="input-group-append">
-          <button class="btn btn-primary" type="button">
-            <i class="fas fa-search"></i>
-          </button>
-        </div>
-      </div>
-    </form>
+    <div w3-include-html="../../navbar_search.html" style='margin-left:auto; margin-right:0;'></div>
 
   </nav>
 
@@ -173,7 +164,9 @@
 		  </div>
           <div class="card-body">
             <div class="table-responsive">
-				PLEKHG5, ANG, ANXA11, ALS2, ASAH1, ATP7A, SQSTM1, NIPA1, CFAP410, CCNF, SLC33A1, VAPB, TRIP4, CHMP2B, MATR3, DAO, DCTN1, FIG4, WASHC5, DYNC1H1, ASCC1, ATL1, OPTN, TRPV4, BSCL2, EPHA4, ERBB4, SIGMAR1, FLII, DEAF1, FXN, FUS, RAI1, GARS, PPARGC1A, PNPLA6, GLE1, EXOSC8, HNRNPA1, CPT1C, DNAJB2, IGHMBP2, L1CAM, MAPT, ATP6, TBK1, NEFH, NEK1, TREM2, PFN1, PLP1, UBQLN2, POLG, PON1, PON2, PON3, DNAJC3, PRPH, PSEN1, ALDH18A1, RTN2, ATXN2, SPG11, CCT5, SMN1, C9ORF72, UNC13A, SOD1, SETX, SPAST, SPG7, IQSEC2, VPS13A, TBCE, BICD2, TARDBP, TUBA4A, UBA1, VCP, VRK1, TWNK, CHCHD10, FBXO38, TAF15
+				
+				<div w3-include-html="../../data/ALS/seed_genes.html" style='font-size:14px'></div>
+				
             </div>
           </div>
 		  <div class="card-footer small text-muted">Updated 23 July 2019</div>
@@ -188,7 +181,7 @@
       <footer class="sticky-footer">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Created by Dimitrios Vitsios (2019)</span>
+            <div w3-include-html="../../footer.html"></div>
           </div>
         </div>
       </footer>
@@ -226,30 +219,9 @@
   <!-- Demo scripts for this page-->
   <script src="../../js/demo/datatables-demo.js"></script>
 
-  <script type="text/javascript" src="../../data/ALS/ranked-gene-predictions/full_ranked_predictions.csv.proba.js"></script>
-  <script>
-
-        $(document).ready(function() {
-            $('#gene-rankings').DataTable( {
-                data: ALS_proba_dataset,
-                columns: [
-                    { title: "Gene Name" },
-                    { title: "XGBoost" },
-                    { title: "ExtraTrees" },
-                    { title: "GradientBoosting" },
-                    { title: "RandomForest" },
-                    { title: "DNN" },
-                    { title: "SVC" },
-                    { title: "Stacking" },
-                ],
-                "aaSorting" : []
-            } );
-        } );
-
-    </script>
 
 
-    <script src="../../include_sidebar_diseases.js"></script>
+  <script src="../../include_html_divs.js"></script>
 
 
 </body>

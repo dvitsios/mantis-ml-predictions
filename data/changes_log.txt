@@ -1,8 +1,11 @@
-gene_rankings.html:
+> Run mantis_ml_profiler to get seed genes and save them in data/[disease]/seed_genes.html
+
+
+> gene_rankings.html:
 - Change best performing classifier in introduction.
 
 === EDA Plots ===
-
+- Convert from pdf -> png:
 Numerical: 200ppi?
 Categorical: 150ppi?
 missing ratios: 200ppi
@@ -11,6 +14,8 @@ Heatmaps: 100ppi
 
 
 === (Interactive viz) Bokeh Plos ===
+--> Change plot id to 'root_id' in all PCA.js, tSNE.js etc.
+
 > PCA:
 Change PCA to unknown genes at legend
 Delete PCA from text (bottom of .js)
