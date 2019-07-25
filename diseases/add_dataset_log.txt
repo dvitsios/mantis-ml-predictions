@@ -56,7 +56,7 @@ cd diseases/
 
 cp -r Template [cur_disease]
 
-find . -type f -exec sed -i 's/_DISEASE_NAME_/[cur_disease]/g' {} +
+find . -type f -exec sed -i 's/GMS/[cur_disease]/g' {} +
 
 
 > In gene_rankings.html, change best performing classifier in introduction.

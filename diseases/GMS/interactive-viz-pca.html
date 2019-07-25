@@ -21,6 +21,9 @@
   <link href="../../css/sb-admin.css" rel="stylesheet">
 
 
+	<link rel="stylesheet" href="https://cdn.pydata.org/bokeh/release/bokeh-1.0.1.min.css" type="text/css" />
+	
+	
 </head>
 
 <body id="page-top">
@@ -28,6 +31,7 @@
   <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
     <a class="navbar-brand mr-1" href="../../index.html" style='color: #deebf7; font-weight: bold; font-family:arial'>mantis-ml Prediction Atlas</a>
+
 
     <!-- Navbar Search -->
     <div w3-include-html="../../navbar_search.html" style='margin-left:auto; margin-right:0;'></div>
@@ -40,7 +44,7 @@
 	<ul class="sidebar navbar-nav">
 
 		<div w3-include-html="../../sidebar_diseases.html" style='width:220px'></div>
-		
+
 	</ul>
 
     <div id="content-wrapper">
@@ -52,13 +56,14 @@
           <li class="breadcrumb-item">
             <a href="overview.html">GMS</a>
           </li>
-          <li class="breadcrumb-item active">Overview</li>
+          <li class="breadcrumb-item active">Interactive Visualisation</li>
         </ol>
 
 
-	<a href="#" class="btn btn-info active" role="button">Overview</a>
+	<a href="overview.html" class="btn btn-info" role="button">Overview</a>
 	<a href="gene-rankings.html" class="btn btn-info" role="button">Gene Rankings</a>
 
+    <!--
     <a class="btn btn-info dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Interactive Visualisation
     </a>
@@ -68,102 +73,39 @@
     <a class="dropdown-item" href="interactive-viz-tsne.html">t-SNE</a>
     <a class="dropdown-item" href="interactive-viz-umap.html">UMAP</a>
     </div>
-
+    -->
 	<a href="eda.html" class="btn btn-info" role="button">EDA Plots</a>
 	<a href="feature-importance.html" class="btn btn-info" role="button">Feature Importance</a>
 
 	<br/><br/>
 	
-
-		<!-- DataTables Example -->
-        <div class="card mb-3">
+		<div class="card mb-3">
+			<div class="card-body">
+			
+			<i class="fas fa-info-circle"></i> In this section you can interactively inspect gene associations by feature similarity using three dimensionality reduction techniques that project the high-dimensional gene space into 2 dimensions: 
+            <b><a href='interactive-viz-pca.html#pca_bokeh_div'>PCA</a></b>, <b><a href='interactive-viz-tsne.html#tsne_bokeh_div'>t-SNE</a></b> and <b><a href='interactive-viz-umap.html#umap_bokeh_div'>UMAP</a></b>.
+			</div>
+		</div>
+	
+		<!-- PCA bokeh plot -->
+        <div class="card mb-3" id='pca_bokeh_div'>
           <div class="card-header" style='float: left'>
-            <i class="fas fa-info-circle"></i>
-            General Info
+            <i class="fas fa-chart-area"></i>
+            PCA (Principal Component Analysis)
 		</div>
           <div class="card-body">
-			<b>Disease:</b> GMS 
-		  </div>
-        </div>
-		
-		<br/><br/>
-		
-	
-        <!-- Area Chart Example-->
-        <div class="card mb-3">
-          <div class="card-header">
-            <i class="fas fa-file-alt"></i>
-            Configuration file</div>
-          <div class="card-body">
-
-			<table class="table table-bordered">
-			  <thead>
-				<tr>
-				  <th colspan="3"> Basic parameters</th>
-				</tr>
-				<tr>
-				  <th scope="col">run:</th>
-				  <th scope="col"></th>
-				  <th scope="col"></th>
-				</tr>
-			  </thead>
-			  <tbody>
-				<tr>
-				  <th scope="row"></th>
-				  <td><b>phenotype:</b></td>
-				  <td>GMS</td>
-				</tr>
-				<tr>
-				  <th scope="row"></th>
-				  <td><b>tissue:</b></td>
-				  <td>Brain</td>
-				</tr>
-				<tr>
-				  <th scope="row"></th>
-				  <td><b>additional_tissues:</b></td>
-				  <td></td>
-				</tr>
-				<tr>
-				  <th scope="row"></th>
-				  <td><b>seed_include_terms:</b></td>
-				  <td>epilep, seizure</td>
-				</tr>
-				<tr>
-				  <th scope="row"></th>
-				  <td><b>exclude_terms:</b></td>
-				  <td></td>
-				</tr>
-				<tr>
-				  <th scope="row"></th>
-				  <td><b>additional_include_terms:</b></td>
-				  <td>nerve, nervous, neuronal, cerebellum, cerebral, hippocampus, hypothalamus</td>
-				</tr>
-				
-			  </tbody>
-			</table> 
+			<div style='margin-top:-20px; color: #ef3b2c;'><span style='font-size:2rem;'>&#8226;</span> <span><b>Seed genes</b></span></div>
+			<div style='margin-top:-20px; color: #252525;'><span style='font-size:2rem;'>&#8226;</span> <span><b>Predicted genes</b></span></div>
 			
-          </div>
-        </div>
+			<div class="bk-root" id="pca_bokeh" style='margin-top:0px; width:700px; height: auto'></div>
 
-		<br/><br/>
-		
-		
-		<!-- Inferred HPO phenotypes -->
-		<div class="card mb-3">
-          <div class="card-header" style='float: left'>
-            <i class="fas fa-seedling"></i>
-            Inferred HPO phenotypes (automatically extracted based on <i>seed/additional_include/exclude</i> terms)
 		  </div>
-          <div class="card-body">
-            <div class="table-responsive">
-				
-				<div w3-include-html="../../data/GMS/inferred_hpo_phenotypes.html" style='line-height:1.5; font-size:16px; color:#3182bd'></div>
-				
-            </div>
-          </div>
         </div>
 		
 		<br/><br/>
+
+
+
 		
 		<!-- Seed Genes -->
         <div class="card mb-3">
@@ -174,7 +116,7 @@
           <div class="card-body">
             <div class="table-responsive">
 				
-				<div w3-include-html="../../data/GMS/seed_genes.html" style='line-height:1.5; font-size:14px; color:#08519c'></div>
+				    <div w3-include-html="../../data/GMS/seed_genes.html" style='line-height:1.5; font-size:14px; color:#08519c'></div>
 				
             </div>
           </div>
@@ -190,7 +132,7 @@
       <footer class="sticky-footer">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <div w3-include-html="../../footer.html"></div>
+			<div w3-include-html="../../footer.html"></div>
           </div>
         </div>
       </footer>
@@ -206,6 +148,9 @@
     <i class="fas fa-angle-up"></i>
   </a>
 
+
+  
+	
 
   <!-- Bootstrap core JavaScript-->
   <script src="../../vendor/jquery/jquery.min.js"></script>
@@ -227,12 +172,59 @@
 
   <!-- Demo scripts for this page-->
   <script src="../../js/demo/datatables-demo.js"></script>
+  
+  
+	
+  
+  <!-- Bokeh interactive visualisations -->
+  <script type="text/javascript" src="https://cdn.pydata.org/bokeh/release/bokeh-1.0.1.min.js"></script>
+	<script type="text/javascript">
+		Bokeh.set_log_level("info");
+	</script>
+  
+  
+    <script type="text/javascript" src="../../data/GMS/unsupervised-learning/PCA.js"></script>
 
+    
+	<!-- Render PCA Bokeh -->
+	<script type="text/javascript">
+	  (function() {
+		var fn = function() {
+		  Bokeh.safely(function() {
+			(function(root) {
+			  function embed_document(root) {
+				
+			  var render_items = [{"docid":"pca_docid","roots":{"root_id":"pca_bokeh"}}];
+			  root.Bokeh.embed.embed_items(pca_json, render_items);
+			
+			  }
+			  if (root.Bokeh !== undefined) {
+				embed_document(root);
+			  } else {
+				var attempts = 0;
+				var timer = setInterval(function(root) {
+				  if (root.Bokeh !== undefined) {
+					embed_document(root);
+					clearInterval(timer);
+				  }
+				  attempts++;
+				  if (attempts > 100) {
+					console.log("Bokeh: ERROR: Unable to run BokehJS code because BokehJS library is missing");
+					clearInterval(timer);
+				  }
+				}, 10, root)
+			  }
+			})(window);
+		  });
+		};
+		if (document.readyState != "loading") fn();
+		else document.addEventListener("DOMContentLoaded", fn);
+	  })();
+	</script>
+	
 
-
-  <script src="../../include_html_divs.js"></script>
-
-
+    <script src="../../include_html_divs.js"></script>
+	
 </body>
 
 </html>
