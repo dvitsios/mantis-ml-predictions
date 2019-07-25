@@ -46,32 +46,12 @@
 
   <div id="wrapper">
 
-    <!-- Sidebar -->
-    <ul class="sidebar navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="index.html">
-          <i class="fas fa-fw fa-home"></i>
-          <span>Home</span>
-        </a>
-      </li>
-      <li class="nav-item dropdown" id='sidebar_menu'>
-        <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="fas fa-fw fa-folder-open"></i>
-          <span>Browse Diseases</span>
-        </a>
-        <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+	<!-- Sidebar -->
+	<ul class="sidebar navbar-nav">
 
-            <div w3-include-html="sidebar_diseases.html"></div>
+				<div w3-include-html="sidebar_diseases.html" style='width:220px'></div>
 
-        </div>
-      </li>
-     
-      <li class="nav-item">
-        <a class="nav-link" href="tables.html">
-          <i class="fas fa-fw fa-dna"></i>
-          <span>Validation with WES</span></a>
-      </li>
-    </ul>
+	</ul>
 
     <div id="content-wrapper">
 
@@ -83,14 +63,14 @@
             Overview</div>
           <div class="card-body">
             
-			<span style='color: #3182bd; font-weight: bold'>mantis-ml Prediction Atlas</span> is a repository for <b>disease-associated gene predictions</b> extracted by <a href='https://github.com/astrazeneca-cgr-publications/mantis-ml-release'>mantis-ml</a>.
+			<span style='color: #4292c6; font-weight: bold'>mantis-ml Prediction Atlas</span> is a repository for <b>disease-associated gene predictions</b> extracted by <a href='https://github.com/astrazeneca-cgr-publications/mantis-ml-release'>mantis-ml</a>.
 			
 			<br/><br/>
 			
 			The atlas currently contains gene prediction results for <b>3</b> diseases as well as for a disease-agnostic scenario (<b>GMS</b> or <b>Generic Mantis-ml Score</b>).
 			
 			<br/><br/>
-			You can browse results from each disease from the <span style='color: #3182bd; font-weight: bold'>Browse Diseases</span> menu or the drop-down on the top right.
+			You can browse results from each disease from the <span style='color: #4292c6; font-weight: bold'>Browse Diseases</span> menu or the drop-down on the top right.
 			<br/>
 			Disease-associated results include:
 				<ul>
@@ -99,49 +79,15 @@
 					<li>Exploratory & Data Analysis Plots</li>
 					<li>Feature importance scores by Boruta</li>
 				</ul>
+				
+		<br/>	
+			<b><a href='https://github.com/astrazeneca-cgr-publications/mantis-ml-release'>mantis-ml</a>'s predictions may also be overlapped with ranked results from independent studies</b> (e.g. cohort-level rare-variant association studies) <b>providing refined prioritisation of novel gene candidates</b> based on the overlapping hypergeometric enrichment of top hits in both studies. 
+		  <br/>
+		  <span style='color: #4292c6;'>&#9670;</span> <b><a href='wes_validation.html'>Validation with WES</a></b> contains such results by overlapping mantis-ml's predictions against <b>WES</b> collapsing analysis studies in <b>CKD</b>, <b>Epilepsy</b> and <b>ALS</b>.
+		  
           </div>
         </div>
 		
-
-        <br/>
-
-		
-		<div class="card mb-3">
-          <div class="card-header">
-            <i class="fas fa-info-circle"></i>
-            Description</div>
-          <div class="card-body">
-            			
-			<p>
-			<a href='https://github.com/astrazeneca-cgr-publications/mantis-ml-release'>mantis-ml</a> follows and Automated Machine Learning (<b>AutoML</b>) approach for feature extraction (relevant to the disease of interest), feature compilation and pre-processing. The processed feature table is then fed to the main algorithm that lies in the core of <a href='https://github.com/astrazeneca-cgr-publications/mantis-ml-release'>mantis-ml</a>: a <b>stochastic semi-supervised learning approach</b> that ranks genes based on their average performance in out-of-bag sets across random balanced datasets from the entire gene pool.
-			</p>
-			
-			<p>
-			A set of standard classifiers are used as part of the semi-supervised learning task:
-
-			<ul>
-				<li><i>Random Forests (RF)</i></li>
-				<li><i>Extremely Randomised Trees (Extra Trees; ET)</i></li>
-				<li><i>Gradien Boosting (GB)</i></li>
-				<li><i>Extreme Gradient Boosting (XGBoost)</i></li>
-				<li><i>Support Vector Classifier (SVC)</i></li>
-				<li><i>Deep Neural Net (DNN)</i></li>
-				<li><i>Stacking (1st layer: RF, ET, GB, SVC; 2nd layer: DNN)</i></li>
-			</ul>
-			
-			Following the semi-supervised learning step of mantis-ml, <b>predictions may be overlapped with results from cohort-level rare-variant association studies</b> (see <a href='wes_validation.html'>Validation with WES</a>).
-
-			<br/><br/>
-			The final consensus results can then been visualised using a set of dimensionality reduction techniques:
-
-			<ul>
-				<li>PCA (Principal Component Analysis)</li>
-				<li>t-SNE (t-distributed Stochastic Neighbor Embedding)</li>
-				<li>UMAP (Uniform Manifold Approximation and Projection)</li>
-			</ul>
-			
-          </div>
-        </div>
         
 
 	<!--
