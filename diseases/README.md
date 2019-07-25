@@ -4,7 +4,7 @@ cp -r Template [cur_disease]
 ```
 
 
-- Replace `_DISEASE_NAME_` with current disease's name:
+- Replace `Epilepsy` with current disease's name:
 ```
-find . -type f -exec sed -i 's/_DISEASE_NAME_/[cur_disease]/g' {} +
+find . -type f -exec sed -i 's/Epilepsy/[cur_disease]/g' {} +
 ```

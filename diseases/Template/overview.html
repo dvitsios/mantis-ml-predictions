@@ -82,7 +82,7 @@
             General Info
 		</div>
           <div class="card-body">
-			<b>Disease:</b> Amyotrophic Lateral Sclerosis
+			<b>Disease:</b> _DISEASE_NAME_ 
 		  </div>
         </div>
 		
@@ -116,36 +116,27 @@
 				<tr>
 				  <th scope="row"></th>
 				  <td><b>tissue:</b></td>
-				  <td>brain</td>
+				  <td>Brain</td>
 				</tr>
 				<tr>
 				  <th scope="row"></th>
 				  <td><b>additional_tissues:</b></td>
-				  <td>Muscle - Skeletal</td>
+				  <td></td>
 				</tr>
 				<tr>
 				  <th scope="row"></th>
 				  <td><b>seed_include_terms:</b></td>
-				  <td>Amyotrophic lateral sclerosis, Degeneration of the lateral corticospinal tracts,
-						Dysfunction of lateral corticospinal tracts,
-						Atrophy of the spinal cord,
-						Progressive distal muscular atrophy,
-						Spinal muscular atrophy,
-						First dorsal interossei muscle atrophy, 
-						Cervical spinal cord atrophy, 
-						Corticospinal tract atrophy, 
-						Corticospinal tract hypoplasia, 
-						Atrophy/Degeneration involving the spinal cord</td>
+				  <td>epilep, seizure</td>
 				</tr>
 				<tr>
 				  <th scope="row"></th>
 				  <td><b>exclude_terms:</b></td>
-				  <td>heart muscle, heart_muscle, cardiac_muscle, smooth_muscle, cardiac muscle, smooth muscle, striated_muscle, striated muscle</td>
+				  <td></td>
 				</tr>
 				<tr>
 				  <th scope="row"></th>
 				  <td><b>additional_include_terms:</b></td>
-				  <td>nerve, nervous, neuronal, spine, spinal, cerebellum, cerebral, hippocampus, hypothalamus, muscular dystrophy, muscular fitness, muscle function, muscle, neuromuscular</td>
+				  <td>nerve, nervous, neuronal, cerebellum, cerebral, hippocampus, hypothalamus</td>
 				</tr>
 				
 			  </tbody>
@@ -154,6 +145,24 @@
           </div>
         </div>
 
+		<br/><br/>
+		
+		
+		<!-- Inferred HPO phenotypes -->
+		<div class="card mb-3">
+          <div class="card-header" style='float: left'>
+            <i class="fas fa-seedling"></i>
+            Inferred HPO phenotypes (automatically extracted based on <i>seed/additional_include/exclude</i> terms)
+		  </div>
+          <div class="card-body">
+            <div class="table-responsive">
+				
+				<div w3-include-html="../../data/_DISEASE_NAME_/inferred_hpo_phenotypes.html" style='line-height:1.5; font-size:16px; color:#3182bd'></div>
+				
+            </div>
+          </div>
+        </div>
+		
 		<br/><br/>
 		
 		<!-- Seed Genes -->
@@ -165,7 +174,7 @@
           <div class="card-body">
             <div class="table-responsive">
 				
-				<div w3-include-html="../../data/_DISEASE_NAME_/seed_genes.html" style='font-size:14px'></div>
+				<div w3-include-html="../../data/_DISEASE_NAME_/seed_genes.html" style='line-height:1.5; font-size:14px; color:#08519c'></div>
 				
             </div>
           </div>

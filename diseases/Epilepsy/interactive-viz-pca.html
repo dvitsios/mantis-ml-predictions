@@ -30,7 +30,6 @@
 
   <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
-
     <a class="navbar-brand mr-1" href="../../index.html" style='color: #deebf7; font-weight: bold; font-family:arial'>mantis-ml Prediction Atlas</a>
 
 
@@ -47,8 +46,7 @@
 		<div w3-include-html="../../sidebar_diseases.html" style='width:220px'></div>
 
 	</ul>
-	
-	
+
     <div id="content-wrapper">
 
       <div class="container-fluid">
@@ -56,7 +54,7 @@
         <!-- Breadcrumbs-->
         <ol class="breadcrumb">
           <li class="breadcrumb-item">
-            <a href="overview.html">ALS</a>
+            <a href="overview.html">Epilepsy</a>
           </li>
           <li class="breadcrumb-item active">Interactive Visualisation</li>
         </ol>
@@ -84,30 +82,29 @@
 			<div class="card-body">
 			
 			<i class="fas fa-info-circle"></i> In this section you can interactively inspect gene associations by feature similarity using three dimensionality reduction techniques that project the high-dimensional gene space into 2 dimensions: 
-			<b><a href='interactive-viz-pca.html#pca_bokeh_div'>PCA</a></b>, <b><a href='interactive-viz-tsne.html#tsne_bokeh_div'>t-SNE</a></b> and <b><a href='interactive-viz-umap.html#umap_bokeh_div'>UMAP</a></b>.
+            <b><a href='interactive-viz-pca.html#pca_bokeh_div'>PCA</a></b>, <b><a href='interactive-viz-tsne.html#tsne_bokeh_div'>t-SNE</a></b> and <b><a href='interactive-viz-umap.html#umap_bokeh_div'>UMAP</a></b>.
 			</div>
 		</div>
 	
-		<!-- UMAP bokeh plot -->
-        <div class="card mb-3" id='umap_bokeh_div'>
+		<!-- PCA bokeh plot -->
+        <div class="card mb-3" id='pca_bokeh_div'>
           <div class="card-header" style='float: left'>
             <i class="fas fa-chart-area"></i>
-            UMAP (Uniform Manifold Approximation and Projection)
+            PCA (Principal Component Analysis)
 		</div>
           <div class="card-body">
 			<div style='margin-top:-20px; color: #ef3b2c;'><span style='font-size:2rem;'>&#8226;</span> <span><b>Seed genes</b></span></div>
 			<div style='margin-top:-20px; color: #252525;'><span style='font-size:2rem;'>&#8226;</span> <span><b>Predicted genes</b></span></div>
 			
-			<div class="bk-root" id="umap_bokeh" style='margin-top:0px; width:700px; height: auto'></div>
+			<div class="bk-root" id="pca_bokeh" style='margin-top:0px; width:700px; height: auto'></div>
 
 		  </div>
         </div>
 		
 		<br/><br/>
 
-		
-		
-		
+
+
 		
 		<!-- Seed Genes -->
         <div class="card mb-3">
@@ -118,7 +115,7 @@
           <div class="card-body">
             <div class="table-responsive">
 				
-				<div w3-include-html="../../data/ALS/seed_genes.html" style='line-height:1.5; font-size:14px; color:#08519c'></div>
+				    <div w3-include-html="../../data/Epilepsy/seed_genes.html" style='line-height:1.5; font-size:14px; color:#08519c'></div>
 				
             </div>
           </div>
@@ -185,46 +182,46 @@
 	</script>
   
   
-	<script type="text/javascript" src="../../data/ALS/unsupervised-learning/UMAP.js"></script>
+    <script type="text/javascript" src="../../data/Epilepsy/unsupervised-learning/PCA.js"></script>
 
     
-	
-	<!-- Render UMAP Bokeh -->	
+	<!-- Render PCA Bokeh -->
 	<script type="text/javascript">
-          (function() {
-            var fn = function() {
-              Bokeh.safely(function() {
-                (function(root) {
-                  function embed_document(root) {
-                    
-                  var render_items = [{"docid":"umap_docid","roots":{"root_id":"umap_bokeh"}}];
-                  root.Bokeh.embed.embed_items(umap_json, render_items);
-                
-                  }
-                  if (root.Bokeh !== undefined) {
-                    embed_document(root);
-                  } else {
-                    var attempts = 0;
-                    var timer = setInterval(function(root) {
-                      if (root.Bokeh !== undefined) {
-                        embed_document(root);
-                        clearInterval(timer);
-                      }
-                      attempts++;
-                      if (attempts > 100) {
-                        console.log("Bokeh: ERROR: Unable to run BokehJS code because BokehJS library is missing");
-                        clearInterval(timer);
-                      }
-                    }, 10, root)
-                  }
-                })(window);
-              });
-            };
-            if (document.readyState != "loading") fn();
-            else document.addEventListener("DOMContentLoaded", fn);
-          })();
-    </script>
+	  (function() {
+		var fn = function() {
+		  Bokeh.safely(function() {
+			(function(root) {
+			  function embed_document(root) {
+				
+			  var render_items = [{"docid":"pca_docid","roots":{"root_id":"pca_bokeh"}}];
+			  root.Bokeh.embed.embed_items(pca_json, render_items);
+			
+			  }
+			  if (root.Bokeh !== undefined) {
+				embed_document(root);
+			  } else {
+				var attempts = 0;
+				var timer = setInterval(function(root) {
+				  if (root.Bokeh !== undefined) {
+					embed_document(root);
+					clearInterval(timer);
+				  }
+				  attempts++;
+				  if (attempts > 100) {
+					console.log("Bokeh: ERROR: Unable to run BokehJS code because BokehJS library is missing");
+					clearInterval(timer);
+				  }
+				}, 10, root)
+			  }
+			})(window);
+		  });
+		};
+		if (document.readyState != "loading") fn();
+		else document.addEventListener("DOMContentLoaded", fn);
+	  })();
+	</script>
 	
+
     <script src="../../include_html_divs.js"></script>
 	
 </body>

@@ -1,0 +1,64 @@
+=== MERGE GENE RANKINGS TABLES ===
+cd data/
+python concat_prediction_tables.py ALS
+python convert_merged_table_to_js_list.py ALS
+
+
+=== SEED GENES ===
+> Run mantis_ml_profiler to get seed genes and save them in data/[disease]/seed_genes.html
+- Also replace quotes:
+:%s/'//g
+
+
+=== PDF to png conversions ===
+- AUC: 300 dpi
+- Boruta: 300 dpi
+- EDA:
+	- categorical_features_histograms.png: 200 dpi
+	- numerical_features_histograms.png: 200 dpi
+	- missing_data_ratios.png: 200 dpi
+
+	- feature_correlations.post_filtering.png: 100 dpi
+	- feature_correlations.pre_filtered.png: 100 dpi
+	
+	
+
+
+=== (Interactive viz) Bokeh Plos ===
+> In unsupervised_learning:
+- Copy all .html into respective .js files, e.g. PCA_interactive_plot.html -> PCA.js
+
+- Keep only the json object and store it to the 'pca_json', 'tsne_json' or 'umap_json' var.
+
+- Replace uuid at the beginning of json object with 'pca_docid', 'tsne_docid' or 'umap_docid'
+
+- Change plot id to 'root_id' in all PCA.js, tSNE.js and UMAP.js.
+
+
+Also:
+> PCA
+- Replace "PCA" with "unknown genes" ('label'-'value') and with '' at the other occurence ('text')
+- plot_height -> 500, plot_width 900
+
+> tSNE:
+- Replace "t-SNE.original_data.perplexity30" with "unknown genes" ('label'-'value') and with '' at the other occurence ('text')
+- plot_height -> 700, plot_width 900
+
+> UMAP:
+- Replace "UMAP.original_data" with "unknown genes" ('label'-'value') and with '' at the other occurence ('text')
+- plot_height -> 700, plot_width 900
+=== END of (Interactive viz) Bokeh Plos ===
+
+
+
+=== CREATE DISEASE-SPECIFIC HTML FILES ===
+cd diseases/
+
+cp -r Template [cur_disease]
+
+find . -type f -exec sed -i 's/_DISEASE_NAME_/[cur_disease]/g' {} +
+
+
+> In gene_rankings.html, change best performing classifier in introduction.
+
+> Edit overview.html with the respective config.yaml values

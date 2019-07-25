@@ -116,7 +116,7 @@
 				<tr>
 				  <th scope="row"></th>
 				  <td><b>tissue:</b></td>
-				  <td>brain</td>
+				  <td>Brain</td>
 				</tr>
 				<tr>
 				  <th scope="row"></th>
@@ -156,6 +156,25 @@
 
 		<br/><br/>
 		
+		
+		<!-- Inferred HPO phenotypes -->
+		<div class="card mb-3">
+          <div class="card-header" style='float: left'>
+            <i class="fas fa-seedling"></i>
+            Inferred HPO phenotypes (automatically extracted based on <i>seed/additional_include/exclude</i> terms)
+		  </div>
+          <div class="card-body">
+            <div class="table-responsive">
+				
+				<div w3-include-html="../../data/Epilepsy/inferred_hpo_phenotypes.html" style='line-height:1.5; font-size:16px; color:#3182bd'></div>
+				
+            </div>
+          </div>
+        </div>
+		
+		<br/><br/>
+		
+		
 		<!-- Seed Genes -->
         <div class="card mb-3">
           <div class="card-header" style='float: left'>
@@ -165,7 +184,7 @@
           <div class="card-body">
             <div class="table-responsive">
 				
-				<div w3-include-html="../../data/ALS/seed_genes.html" style='font-size:14px'></div>
+				<div w3-include-html="../../data/ALS/seed_genes.html" style='line-height:1.5; font-size:14px; color:#08519c'></div>
 				
             </div>
           </div>

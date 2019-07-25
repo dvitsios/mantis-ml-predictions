@@ -10,18 +10,6 @@ input_dir = disease + '/ranked-gene-predictions'
 input_file = input_dir + '/full_ranked_predictions.csv'
 print('Input file:', input_file)
 
-"""
-out_proba_file = input_file + '.proba.js'
-print('Output proba file:', out_proba_file)
-out_perc_file = input_file + '.perc.js'
-print('Output percentile file:', out_perc_file)
-
-
-out_proba_fh = open(out_proba_file, 'w')
-out_proba_fh.write('var ' + 'proba_dataset = [\n')
-out_perc_fh = open(out_perc_file, 'w')
-out_perc_fh.write('var ' + 'perc_dataset = [\n')
-"""
 
 out_file = input_file + '.proba_perc.js'
 out_fh = open(out_file, 'w')
@@ -75,6 +63,3 @@ out_fh.write(full_proba_str)
 out_fh.write('\nvar ' + 'perc_dataset = [\n')
 full_perc_str = full_perc_str[:-2] + '\n];'
 out_fh.write(full_perc_str)
-
-#out_proba_fh.write(full_proba_str)
-#out_perc_fh.write(full_perc_str)
