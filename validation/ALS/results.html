@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>mantis-ml Prediction Atlas</title>
+
+  <!-- Custom fonts for this template-->
+  <link href="../../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+
+  <!-- Page level plugin CSS-->
+  <link href="../../vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+
+  <!-- Custom styles for this template-->
+  <link href="../../css/sb-admin.css" rel="stylesheet">
+
+
+</head>
+
+<body id="page-top">
+
+  <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
+
+    <a class="navbar-brand mr-1" href="#" style='color: #deebf7; font-weight: bold; font-family:arial'>mantis-ml Prediction Atlas</a>
+
+
+    <!-- Navbar Search -->
+    <div w3-include-html="../../navbar_search.html" style='margin-left:auto; margin-right:0;'></div>
+
+  </nav>
+
+  <div id="wrapper">
+
+	<!-- Sidebar -->
+	<ul class="sidebar navbar-nav">
+
+				<div w3-include-html="../../sidebar_diseases.html" style='width:220px'></div>
+
+	</ul>
+
+    <div id="content-wrapper">
+
+      <div class="container-fluid">
+
+		<div class="card mb-3">
+          <div class="card-header">
+            <i class="fas fa-info-circle"></i>
+            Amyotrophic Lateral Sclerosis (WES validation)
+		  </div>
+          <div class="card-body">
+
+			<span style='color: #4292c6;'>&#9670;</span> WES-validated disease menu:
+			<br/><br/>		
+
+			<div id='val_disease_menu' style='margin-left:20px'>
+				<a href="/mantis-ml-predictions/validation/ALS/results.html" class="btn btn-success active" id='als_validation_btn' role="button" style="width:90px; margin-right:10px">ALS</a>
+				
+				<a href="/mantis-ml-predictions/validation/CKD/results.html" class="btn btn-success" id='ckd_validation_btn' role="button" style="width:90px; margin-right:10px">CKD</a>
+				
+				<a href="/mantis-ml-predictions/validation/Epilepsy/results.html" class="btn btn-success" id='epilepsy_validation_btn' role="button" style="width:90px; margin-right:10px">Epilepsy</a>
+			</div>
+			<!--
+				<div w3-include-html="/mantis-ml-predictions/validation/disease_menu.html"></div>
+			-->
+			
+			<hr/>
+			<br/>
+			
+			
+			<h5><i class="fas fa-chart-area"></i> Hypergeometric enrichment of mantis-ml predictions against WES collapsing results </h5>
+			<br/>
+			<img src='/mantis-ml-predictions/validation/ALS/hypergeom_plot.png' style='width:700px; height:auto'>
+			
+          </div>
+		  
+		  
+		  <br/>
+		
+		  <div class="card-body">
+			<h5><i class="fas fa-table"></i> Consensus of mantis-ml & collapsing analysis predictions: </h5>
+			<br/>
+            <div class="table-responsive">
+
+                   <table class="table table-bordered" id="mantis-vs-collapsin-table" class="display" width="100%"></table>
+
+            </div>
+          </div>
+		  
+        </div>
+		
+		
+		
+
+		
+        
+
+	<!--
+	<a href="#link" class="btn btn-info active" role="button">Overview</a>
+	<a href="#link" class="btn btn-info" role="button">Gene Rankings</a>
+	<a href="#link" class="btn btn-info" role="button">Interactive Visualisation</a>
+	<a href="#link" class="btn btn-info" role="button">EDA Plots</a>
+	<a href="#link" class="btn btn-info" role="button">Feature Importance</a>
+	-->
+
+      </div>
+      <!-- /.container-fluid -->
+
+      <!-- Sticky Footer -->
+      <footer class="sticky-footer">
+		<div class="container my-auto">
+		  <div class="copyright text-center my-auto">
+					<div w3-include-html="../../footer.html"></div>
+		  </div>
+		</div>
+      </footer>
+
+    </div>
+    <!-- /.content-wrapper -->
+
+  </div>
+  <!-- /#wrapper -->
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+
+
+  <!-- Bootstrap core JavaScript-->
+  <script src="../../vendor/jquery/jquery.min.js"></script>
+  <script src="../../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="../../vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Page level plugin JavaScript-->
+  <script src="../../vendor/datatables/jquery.dataTables.js"></script>
+  <script src="https://cdn.datatables.net/buttons/1.5.6/js/dataTables.buttons.min.js"></script>
+  <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.html5.min.js"></script>
+  <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.flash.min.js"></script>
+
+  <script src="../../vendor/datatables/dataTables.bootstrap4.js"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="../../js/sb-admin.min.js"></script>
+
+  <!-- Demo scripts for this page-->
+  <script src="../../js/demo/datatables-demo.js"></script>
+
+  
+  <script type="text/javascript" src="/mantis-ml-predictions/validation/ALS/mantis_ml_vs_collapsing.js"></script>
+  
+  
+  <script>
+
+        $(document).ready(function() {
+            $('#mantis-vs-collapsin-table').DataTable( {
+				// "ajax": "sources/arrays.txt",
+                data: mantis_vs_collapsing_json,
+                columns: [
+                    { title: "Gene_Name" },
+                    { title: "mantis-ml Rank" },
+                    { title: "mantis-ml Percentile" },
+                    { title: "mantis-ml Probability" },
+                    { title: "Collapsing p-val" },
+                    { title: "Collapsing Rank" },
+                    { title: "Known gene" }
+                ],
+                "aaSorting" : [],
+				"deferRender": true
+            } );
+        } );
+  </script>
+
+  <script src="../../include_html_divs.js"></script>
+  
+
+</body>
+
+</html>

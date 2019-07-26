@@ -56,6 +56,8 @@ cd diseases/
 
 cp -r Template [cur_disease]
 
+cd [cur_disease]
+
 find . -type f -exec sed -i 's/GMS/[cur_disease]/g' {} +
 
 
