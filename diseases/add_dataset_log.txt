@@ -29,6 +29,8 @@ python convert_merged_table_to_js_list.py ALS
 
 
 > In unsupervised_learning:
+[!!!!!!] Change bokeh version from 1.0.1 to 1.1.0 
+
 - Copy all .html into respective .js files, e.g. PCA_interactive_plot.html -> PCA.js
 
 - Keep only the json object and store it to the 'pca_json', 'tsne_json' or 'umap_json' var.
@@ -37,19 +39,18 @@ python convert_merged_table_to_js_list.py ALS
 
 - Change plot id to 'root_id' in all PCA.js, tSNE.js and UMAP.js.
 
+- plot_height -> 700, plot_width 900
+
 
 Also:
 > PCA
 - Replace "PCA" with "unknown genes" ('label'-'value') and with '' at the other occurence ('text')
-- plot_height -> 500, plot_width 900
 
 > tSNE:
 - Replace "t-SNE.original_data.perplexity30" with "unknown genes" ('label'-'value') and with '' at the other occurence ('text')
-- plot_height -> 700, plot_width 900
 
 > UMAP:
 - Replace "UMAP.original_data" with "unknown genes" ('label'-'value') and with '' at the other occurence ('text')
-- plot_height -> 700, plot_width 900
 === END of (Interactive viz) Bokeh Plos ===
 
 

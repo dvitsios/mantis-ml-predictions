@@ -59,7 +59,7 @@
 	<a href="#" class="btn btn-info active" role="button">Overview</a>
 	<a href="gene-rankings.html" class="btn btn-info" role="button">Gene Rankings</a>
 
-    <!--
+    
     <a class="btn btn-info dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Interactive Visualisation
     </a>
@@ -69,7 +69,7 @@
     <a class="dropdown-item" href="interactive-viz-tsne.html">t-SNE</a>
     <a class="dropdown-item" href="interactive-viz-umap.html">UMAP</a>
     </div>
-    -->
+    
 
 	<a href="eda.html" class="btn btn-info" role="button">EDA Plots</a>
 	<a href="feature-importance.html" class="btn btn-info" role="button">Feature Importance</a>
@@ -85,6 +85,10 @@
 		</div>
           <div class="card-body">
 			<b>Disease:</b> GMS (Generic Mantis-ml score) / Disease-agnostic 
+			<br/><br/>
+			<span style='color:#3182bd; font-weight: bold'>GMS</span> has been trained using all <i>OMIM</i> disease-associated genes as seed genes. 
+			<br/><br/>
+			It represents a generic <b>disease-likelihood score</b> for each gene, outperforming published gene-level scores such as <i>pLI (gnomAD)</i>, <i>mis_z (gnomAD)</i>, <i>RVIS (ExAC v2)</i>, <i>cnv-score (ExAC)</i> and <i>LoF_FDR (ExAC)</i>.
 		  </div>
         </div>
 		
