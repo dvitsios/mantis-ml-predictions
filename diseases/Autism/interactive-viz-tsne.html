@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>mantis-ml Gene Prioritisation Atlas</title>
+
+  <!-- Custom fonts for this template-->
+  <link href="../../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+
+  <!-- Page level plugin CSS-->
+  <link href="../../vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+
+  <!-- Custom styles for this template-->
+  <link href="../../css/sb-admin.css" rel="stylesheet">
+
+
+	<link rel="stylesheet" href="https://cdn.pydata.org/bokeh/release/bokeh-1.1.0.min.css" type="text/css" />
+	
+	
+</head>
+
+<body id="page-top">
+
+  <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
+
+    <a class="navbar-brand mr-1" href="../../index.html" style='color: #deebf7; font-weight: bold; font-family:arial'>mantis-ml Gene Prioritisation Atlas</a>
+
+
+    <!-- Navbar Search -->
+    <div w3-include-html="../../navbar_search.html" style='margin-left:auto; margin-right:0;'></div>
+
+  </nav>
+
+  <div id="wrapper">
+
+    <!-- Sidebar -->
+	<ul class="sidebar navbar-nav">
+
+		<div w3-include-html="../../sidebar_diseases.html" style='width:220px'></div>
+
+	</ul>
+
+    <div id="content-wrapper">
+
+      <div class="container-fluid">
+
+        <!-- Breadcrumbs-->
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a href="overview.html">Autism</a>
+          </li>
+          <li class="breadcrumb-item active">Interactive Visualisation</li>
+        </ol>
+
+
+	<a href="overview.html" class="btn btn-info" role="button">Overview</a>
+	<a href="gene-rankings.html" class="btn btn-info" role="button">Gene Rankings</a>
+
+    <a class="btn btn-info dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Interactive Visualisation
+    </a>
+
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+    <a class="dropdown-item" href="interactive-viz-pca.html">PCA</a>
+    <a class="dropdown-item" href="interactive-viz-tsne.html">t-SNE</a>
+    <a class="dropdown-item" href="interactive-viz-umap.html">UMAP</a>
+    </div>
+
+	<a href="eda.html" class="btn btn-info" role="button">EDA Plots</a>
+	<a href="feature-importance.html" class="btn btn-info" role="button">Feature Importance</a>
+
+	<br/><br/>
+	
+		<div class="card mb-3">
+			<div class="card-body">
+			
+			<i class="fas fa-info-circle"></i> In this section you can interactively inspect gene associations by feature similarity using three dimensionality reduction techniques that project the high-dimensional gene space into 2 dimensions: 
+            <b><a href='interactive-viz-pca.html#pca_bokeh_div'>PCA</a></b>, <b><a href='interactive-viz-tsne.html#tsne_bokeh_div'>t-SNE</a></b> and <b><a href='interactive-viz-umap.html#umap_bokeh_div'>UMAP</a></b>.
+			</div>
+		</div>
+	
+
+		<!-- t-SNE bokeh plot -->
+        <div class="card mb-3" id='tsne_bokeh_div'>
+          <div class="card-header" style='float: left'>
+            <i class="fas fa-chart-area"></i>
+            t-SNE (t-Distributed Stochastic Neighbor Embedding; <i>perplexity=30</i>)
+		</div>
+          <div class="card-body">
+			<div style='margin-top:-20px; color: #ef3b2c;'><span style='font-size:2rem;'>&#8226;</span> <span><b>Seed genes</b></span></div>
+			<div style='margin-top:-20px; color: #252525;'><span style='font-size:2rem;'>&#8226;</span> <span><b>Predicted genes (top-40 from best performing classifier)</b></span></div>
+			
+			<div class="bk-root" id="tsne_bokeh" style='margin-top:0px; width:700px; height: auto'></div>
+
+		  </div>
+        </div>
+		
+		<br/><br/>
+
+		
+		
+		<!-- Seed Genes -->
+        <div class="card mb-3">
+          <div class="card-header" style='float: left'>
+            <i class="fas fa-seedling"></i>
+            Seed genes (automatically inferred from HPO)
+		  </div>
+          <div class="card-body">
+            <div class="table-responsive">
+				
+				<div w3-include-html="../../data/Autism/seed_genes.html" style='line-height:1.5; font-size:14px; color:#08519c'></div>
+				
+            </div>
+          </div>
+		  <div class="card-footer small text-muted">Updated 23 July 2019</div>
+        </div>
+
+
+
+      </div>
+      <!-- /.container-fluid -->
+
+      <!-- Sticky Footer -->
+      <footer class="sticky-footer">
+        <div class="container my-auto">
+          <div class="copyright text-center my-auto">
+			<div w3-include-html="../../footer.html"></div>
+          </div>
+        </div>
+      </footer>
+
+    </div>
+    <!-- /.content-wrapper -->
+
+  </div>
+  <!-- /#wrapper -->
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+
+  
+	
+
+  <!-- Bootstrap core JavaScript-->
+  <script src="../../vendor/jquery/jquery.min.js"></script>
+  <script src="../../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="../../vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Page level plugin JavaScript-->
+  <script src="../../vendor/datatables/jquery.dataTables.js"></script>
+  <script src="https://cdn.datatables.net/buttons/1.5.6/js/dataTables.buttons.min.js"></script>
+  <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.html5.min.js"></script>
+  <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.flash.min.js"></script>
+
+  <script src="../../vendor/datatables/dataTables.bootstrap4.js"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="../../js/sb-admin.min.js"></script>
+
+  <!-- Demo scripts for this page-->
+  <script src="../../js/demo/datatables-demo.js"></script>
+  
+  
+	
+  
+  <!-- Bokeh interactive visualisations -->
+  <script type="text/javascript" src="https://cdn.pydata.org/bokeh/release/bokeh-1.1.0.min.js"></script>
+	<script type="text/javascript">
+		Bokeh.set_log_level("info");
+	</script>
+  
+  
+	<script type="text/javascript" src="../../data/Autism/unsupervised-learning/tSNE.js"></script>
+    
+
+	<!-- Render t-SNE Bokeh -->	
+	<script type="text/javascript">
+          (function() {
+            var fn = function() {
+              Bokeh.safely(function() {
+                (function(root) {
+                  function embed_document(root) {
+                    
+                  var render_items = [{"docid":"tsne_docid","roots":{"root_id":"tsne_bokeh"}}];
+                  root.Bokeh.embed.embed_items(tsne_json, render_items);
+                
+                  }
+                  if (root.Bokeh !== undefined) {
+                    embed_document(root);
+                  } else {
+                    var attempts = 0;
+                    var timer = setInterval(function(root) {
+                      if (root.Bokeh !== undefined) {
+                        embed_document(root);
+                        clearInterval(timer);
+                      }
+                      attempts++;
+                      if (attempts > 100) {
+                        console.log("Bokeh: ERROR: Unable to run BokehJS code because BokehJS library is missing");
+                        clearInterval(timer);
+                      }
+                    }, 10, root)
+                  }
+                })(window);
+              });
+            };
+            if (document.readyState != "loading") fn();
+            else document.addEventListener("DOMContentLoaded", fn);
+          })();
+    </script>
+	
+    <script src="../../include_html_divs.js"></script>	
+	
+</body>
+
+</html>

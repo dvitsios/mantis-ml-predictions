@@ -25,9 +25,6 @@ python convert_merged_table_to_js_list.py ALS
 
 
 === (Interactive viz) Bokeh Plos ===
-[!] Create custom plots at the "mantis-ml post-processing ('post') step" with the top performing classifier's predictions.
-
-
 > In unsupervised_learning:
 [!!!!!!] Change bokeh version from 1.0.1 to 1.1.0 
 

@@ -4,7 +4,12 @@ import glob
 import ntpath
 
 
-top_clf_per_disease = {'ALS': 'ExtraTrees', 'CKD': 'XGBoost', 'Epilepsy': 'XGBoost', 'GMS': 'GradientBoosting'}
+top_clf_per_disease = { 'ALS': 'ExtraTrees', 
+			'Alzheimers': 'SVC',
+			'Autism': 'ExtraTrees',
+			'CKD': 'XGBoost', 
+			'Epilepsy': 'XGBoost', 
+			'GMS': 'GradientBoosting'}
 
 
 if __name__ == '__main__':
