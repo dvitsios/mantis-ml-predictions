@@ -7,9 +7,11 @@ import ntpath
 top_clf_per_disease = { 'ALS': 'ExtraTrees', 
 			'Alzheimers': 'SVC',
 			'Autism': 'ExtraTrees',
+			'Cardiovascular-Disease': 'XGBoost', 
 			'CKD': 'XGBoost', 
 			'Epilepsy': 'XGBoost', 
 			'Pulmonary-Disease': 'SVC',
+			'Respiratory-Disease': 'XGBoost', 
 			'GMS': 'GradientBoosting'}
 
 
