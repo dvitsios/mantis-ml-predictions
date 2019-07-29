@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>mantis-ml Gene Prioritisation Atlas</title>
+
+  <!-- Custom fonts for this template-->
+  <link href="../../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+
+  <!-- Page level plugin CSS-->
+  <link href="../../vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+
+  <!-- Custom styles for this template-->
+  <link href="../../css/sb-admin.css" rel="stylesheet">
+
+
+</head>
+
+<body id="page-top">
+
+  <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
+
+    <a class="navbar-brand mr-1" href="../../index.html" style='color: #deebf7; font-weight: bold; font-family:arial'>mantis-ml Gene Prioritisation Atlas</a>
+
+    <!-- Navbar Search -->
+    <div w3-include-html="../../navbar_search.html" style='margin-left:auto; margin-right:0;'></div>
+
+  </nav>
+
+  <div id="wrapper">
+
+    <!-- Sidebar -->
+	<ul class="sidebar navbar-nav">
+
+		<div w3-include-html="../../sidebar_diseases.html" style='width:220px'></div>
+		
+	</ul>
+
+    <div id="content-wrapper">
+
+      <div class="container-fluid">
+
+        <!-- Breadcrumbs-->
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a href="overview.html">Immunodeficiency</a>
+          </li>
+          <li class="breadcrumb-item active">Overview</li>
+        </ol>
+
+
+	<a href="#" class="btn btn-info active" role="button">Overview</a>
+	<a href="gene-rankings.html" class="btn btn-info" role="button">Gene Rankings</a>
+
+    <a class="btn btn-info dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Interactive Visualisation
+    </a>
+
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+    <a class="dropdown-item" href="interactive-viz-pca.html">PCA</a>
+    <a class="dropdown-item" href="interactive-viz-tsne.html">t-SNE</a>
+    <a class="dropdown-item" href="interactive-viz-umap.html">UMAP</a>
+    </div>
+
+	<a href="eda.html" class="btn btn-info" role="button">EDA Plots</a>
+	<a href="feature-importance.html" class="btn btn-info" role="button">Feature Importance</a>
+
+	<br/><br/>
+	
+
+		<!-- DataTables Example -->
+        <div class="card mb-3">
+          <div class="card-header" style='float: left'>
+            <i class="fas fa-info-circle"></i>
+            General Info
+		</div>
+          <div class="card-body">
+			<b>Disease:</b> Immunodeficiency 
+		  </div>
+        </div>
+		
+		<br/><br/>
+		
+	
+        <!-- Area Chart Example-->
+        <div class="card mb-3">
+          <div class="card-header">
+            <i class="fas fa-file-alt"></i>
+            Configuration file</div>
+          <div class="card-body">
+
+			<table class="table table-bordered">
+			  <thead>
+				<tr>
+				  <th colspan="3"> Basic parameters</th>
+				</tr>
+				<tr>
+				  <th scope="col">run:</th>
+				  <th scope="col"></th>
+				  <th scope="col"></th>
+				</tr>
+			  </thead>
+			  <tbody>
+				<tr>
+				  <th scope="row"></th>
+				  <td><b>phenotype:</b></td>
+				  <td>Immunodeficiency</td>
+				</tr>
+				<tr>
+				  <th scope="row"></th>
+				  <td><b>tissue:</b></td>
+				  <td>Blood</td>
+				</tr>
+				<tr>
+				  <th scope="row"></th>
+				  <td><b>additional_tissues:</b></td>
+				  <td>thymus, tonsil, bone marrow, spleen</td>
+				</tr>
+				<tr>
+				  <th scope="row"></th>
+				  <td><b>seed_include_terms:</b></td>
+				  <td>immunodeficiency</td>
+				</tr>
+				<tr>
+				  <th scope="row"></th>
+				  <td><b>exclude_terms:</b></td>
+				  <td></td>
+				</tr>
+				<tr>
+				  <th scope="row"></th>
+				  <td><b>additional_include_terms:</b></td>
+				  <td>immuno, immune</td>
+				</tr>
+				
+			  </tbody>
+			</table> 
+			
+          </div>
+        </div>
+
+		<br/><br/>
+		
+		
+		<!-- Inferred HPO phenotypes -->
+		<div class="card mb-3">
+          <div class="card-header" style='float: left'>
+            <i class="fas fa-seedling"></i>
+            Inferred HPO phenotypes (automatically extracted based on <i>seed/additional_include/exclude</i> terms)
+		  </div>
+          <div class="card-body">
+            <div class="table-responsive">
+				
+				<div w3-include-html="../../data/Immunodeficiency/inferred_hpo_phenotypes.html" style='line-height:1.5; font-size:16px; color:#3182bd'></div>
+				
+            </div>
+          </div>
+        </div>
+		
+		<br/><br/>
+		
+		<!-- Seed Genes -->
+        <div class="card mb-3">
+          <div class="card-header" style='float: left'>
+            <i class="fas fa-seedling"></i>
+            Seed genes (automatically inferred from HPO)
+		  </div>
+          <div class="card-body">
+            <div class="table-responsive">
+				
+				<div w3-include-html="../../data/Immunodeficiency/seed_genes.html" style='line-height:1.5; font-size:14px; color:#08519c'></div>
+				
+            </div>
+          </div>
+		  <div class="card-footer small text-muted">Updated 29 July 2019</div>
+        </div>
+
+
+
+      </div>
+      <!-- /.container-fluid -->
+
+      <!-- Sticky Footer -->
+      <footer class="sticky-footer">
+        <div class="container my-auto">
+          <div class="copyright text-center my-auto">
+            <div w3-include-html="../../footer.html"></div>
+          </div>
+        </div>
+      </footer>
+
+    </div>
+    <!-- /.content-wrapper -->
+
+  </div>
+  <!-- /#wrapper -->
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+
+  <!-- Bootstrap core JavaScript-->
+  <script src="../../vendor/jquery/jquery.min.js"></script>
+  <script src="../../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="../../vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Page level plugin JavaScript-->
+  <script src="../../vendor/datatables/jquery.dataTables.js"></script>
+  <script src="https://cdn.datatables.net/buttons/1.5.6/js/dataTables.buttons.min.js"></script>
+  <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.html5.min.js"></script>
+  <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.flash.min.js"></script>
+
+  <script src="../../vendor/datatables/dataTables.bootstrap4.js"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="../../js/sb-admin.min.js"></script>
+
+  <!-- Demo scripts for this page-->
+  <script src="../../js/demo/datatables-demo.js"></script>
+
+
+
+  <script src="../../include_html_divs.js"></script>
+
+
+</body>
+
+</html>

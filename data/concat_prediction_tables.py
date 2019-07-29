@@ -10,6 +10,8 @@ top_clf_per_disease = { 'ALS': 'ExtraTrees',
 			'Cardiovascular-Disease': 'XGBoost', 
 			'CKD': 'XGBoost', 
 			'Epilepsy': 'XGBoost', 
+			'Immunodeficiency': 'RandomForest', 
+			'Intellectual-Disability': 'XGBoost', 
 			'Pulmonary-Disease': 'SVC',
 			'Respiratory-Disease': 'XGBoost', 
 			'GMS': 'GradientBoosting'}
