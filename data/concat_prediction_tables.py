@@ -54,7 +54,8 @@ if __name__ == '__main__':
 
 
     full_df.sort_values(by=top_clf_per_disease[disease] + '_proba', ascending=False, inplace=True)
-    full_df = full_df.round(5)
+    # Number of decimal points to keep: 3 (default), 6 for GMS
+    full_df = full_df.round(6)
     print(full_df.head())
     print(full_df.shape)
 
