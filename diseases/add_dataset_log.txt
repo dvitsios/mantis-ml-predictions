@@ -26,7 +26,7 @@ python convert_merged_table_to_js_list.py ALS
 
 === (Interactive viz) Bokeh Plos ===
 > In unsupervised_learning:
-[!!!!!!] Change bokeh version from 1.0.1 to 1.1.0 
+[!] Change bokeh version from 1.0.1 to 1.1.0 
 
 - Copy all .html into respective .js files, e.g. PCA_interactive_plot.html -> PCA.js
 
